@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cen.praise.dao.PraiseDao" >
+  <resultMap id="BaseResultMap" type="com.cen.praise.entity.Praise" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="newsid" property="newsid" jdbcType="INTEGER" />
+    <result column="news_type" property="news_type" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid,newsid,news_type,ip
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_praise
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="findByAid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from t_praise
+    where newsid = #{newsid,jdbcType=INTEGER}
+  </select>
+  <!--根据用户id和类型统计点赞数-->
+  <select id="countNews" resultType="java.util.Map">
+    select count(*) from t_praise where newsid = #{newsid,jdbcType=VARCHAR} and news_type = #{news_type,jdbcType=VARCHAR}
+  </select>
+
+
+
+  <select id="findByUidAndNewsId"  resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from t_praise
+    where uid = #{uid,jdbcType=VARCHAR}
+    and newsid = #{newsid,jdbcType=INTEGER}
+    and news_type = #{news_type,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findByIpByAid" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from t_praise
+    where ip = #{ip,jdbcType=VARCHAR} and newsid = #{newsid,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 查询日志列表 -->
+   <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select 
+     <include refid="Base_Column_List" />
+     from t_praise
+     where is_del = 0
+
+       order by id desc
+     <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select> 
+  
+  <!-- 查询列表数 -->
+   <select id="selectListCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select
+    count(id) as count
+    from t_praise
+    where is_del = 0
+
+  </select>
+
+
+
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_praise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cen.praise.entity.Praise" >
+    insert into t_praise (id, uid, newsid,
+      news_type,ip
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{newsid,jdbcType=INTEGER},
+      #{news_type,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.praise.entity.Praise" >
+    insert into t_praise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="newsid != null" >
+        newsid,
+      </if>
+      <if test="news_type != null" >
+        news_type,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="newsid != null" >
+        #{newsid,jdbcType=INTEGER},
+      </if>
+      <if test="news_type != null" >
+        #{news_type,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.praise.entity.Praise" >
+    update t_praise
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="newsid != null" >
+        newsid = #{newsid,jdbcType=INTEGER},
+      </if>
+      <if test="news_type != null" >
+        news_type = #{news_type,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.praise.entity.Praise" >
+    update t_praise
+    set uid = #{uid,jdbcType=VARCHAR},
+      newsid = #{newsid,jdbcType=INTEGER},
+      news_type = #{news_type,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>

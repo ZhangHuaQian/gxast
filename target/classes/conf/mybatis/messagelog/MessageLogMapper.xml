@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.MessageLog.dao.MessageLogMapper">
+  <resultMap id="BaseResultMap" type="com.cen.MessageLog.entity.MessageLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="messageId" jdbcType="INTEGER" property="messageid" />
+    <result column="recId" jdbcType="VARCHAR" property="recid" />
+    <result column="statue" jdbcType="VARCHAR" property="statue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, messageId, recId, statue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_messagelog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    *
+    from t_messagelog
+    where messageId = #{messageId,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_messagelog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cen.MessageLog.entity.MessageLog">
+    insert into t_messagelog (id, messageId, recId, 
+      statue)
+    values (#{id,jdbcType=INTEGER}, #{messageid,jdbcType=INTEGER}, #{recid,jdbcType=VARCHAR},
+      #{statue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.MessageLog.entity.MessageLog">
+    insert into t_messagelog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="messageid != null">
+        messageId,
+      </if>
+      <if test="recid != null">
+        recId,
+      </if>
+      <if test="statue != null">
+        statue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="messageid != null">
+        #{messageid,jdbcType=INTEGER},
+      </if>
+      <if test="recid != null">
+        #{recid,jdbcType=VARCHAR},
+      </if>
+      <if test="statue != null">
+        #{statue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--批量添加 包括详情-->
+  <insert id="insertBatch">
+    INSERT INTO t_messagelog
+    (
+    messageId, recId, statue
+    )
+    values
+    <foreach collection ="list" item="messageLog" index="index" separator =",">
+      (
+      #{messageLog.messageid,jdbcType=INTEGER},#{messageLog.recid,jdbcType=VARCHAR},#{messageLog.statue,jdbcType=VARCHAR}
+      )
+    </foreach >
+    ON DUPLICATE KEY UPDATE
+    messageId = values (messageId),
+    recId = values (recId)
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.MessageLog.entity.MessageLog">
+    update t_messagelog
+    <set>
+      <if test="messageid != null">
+        messageId = #{messageid,jdbcType=INTEGER},
+      </if>
+      <if test="recid != null">
+        recId = #{recid,jdbcType=VARCHAR},
+      </if>
+      <if test="statue != null">
+        statue = #{statue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.MessageLog.entity.MessageLog">
+    update t_messagelog
+    set messageId = #{messageid,jdbcType=INTEGER},
+      recId = #{recid,jdbcType=VARCHAR},
+      statue = #{statue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateStatueByIDID" parameterType="com.cen.Message.entity.Message" >
+    UPDATE t_message
+    LEFT JOIN  t_messagelog
+    ON  t_message.id=t_messagelog.messageId
+    SET t_messagelog.statue = '1'
+    where t_messagelog.messageId = #{messageid,jdbcType=INTEGER}
+    and t_messagelog.recid = #{recid,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>

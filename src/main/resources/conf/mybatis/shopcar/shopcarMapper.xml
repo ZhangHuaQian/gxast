@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.shopcar.dao.shopcarMapper">
+  <resultMap id="BaseResultMap" type="com.cen.shopcar.entity.shopcar">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" /> 
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createtime, user_id, status, number, name, price, pid,product_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_shopcar_r
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_shopcar_r
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteBat">  
+    delete from t_shopcar_r
+    where user_id in 
+    <foreach collection="List" index="index" item="item" open="(" separator="," close=")">
+        #{item} 
+    </foreach>
+  </delete>
+  <!-- 查询购物车列表 -->
+   <select id="selectList" resultMap="BaseResultMap">
+     select 
+     *         
+     from t_shopcar_r
+     where 1=1
+     <if test="status != null">
+       and status = #{status}  
+     </if> 
+     <if test="userId != null">
+       and user_id = #{userId}
+     </if> 
+     <if test="productId != null">
+       and product_id = #{productId}
+     </if>
+     <if test="pid != null">
+       and pid = #{pid}
+     </if>
+       order by createtime desc
+  </select>
+  <insert id="insert" keyProperty="id"  parameterType="com.cen.shopcar.entity.shopcar">
+  	<selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
+    insert into t_shopcar_r (id, createtime, user_id, 
+      status, number, name, 
+      price, pid,product_id)
+    values (#{id,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{userId,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{pid,jdbcType=INTEGER},#{productId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyProperty="id"  parameterType="com.cen.shopcar.entity.shopcar">
+  	<selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
+    insert into t_shopcar_r
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.shopcar.entity.shopcar">
+    update t_shopcar_r
+    <set>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.shopcar.entity.shopcar">
+    update t_shopcar_r
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      pid = #{pid,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=VARCHAR}   
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!--删除购物车中选中的商品-->
+  <delete id="deleteCheckedProduct" >
+    delete from t_shopcar_r where id in
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>

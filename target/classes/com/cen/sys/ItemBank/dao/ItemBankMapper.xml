@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.sys.ItemBank.dao.ItemBankMapper">
+  <resultMap id="BaseResultMap" type="com.cen.sys.ItemBank.entity.ItemBank">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="item_type_id" jdbcType="INTEGER" property="itemTypeId" />
+    <result column="item_type" jdbcType="VARCHAR" property="itemType" />
+    <result column="item_way_id" jdbcType="INTEGER" property="itemWayId" />
+    <result column="item_way" jdbcType="VARCHAR" property="itemWay" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="options" jdbcType="VARCHAR" property="options" />
+    <result column="right_key_id" jdbcType="VARCHAR" property="rightKeyId" />
+    <result column="analysis" jdbcType="VARCHAR" property="analysis" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, item_type_id, item_type, item_way_id, item_way, content, options, right_key_id, 
+    analysis
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_item_bank
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_item_bank
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cen.sys.ItemBank.entity.ItemBank">
+    insert into s_item_bank
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemTypeId != null">
+        item_type_id,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="itemWayId != null">
+        item_way_id,
+      </if>
+      <if test="itemWay != null">
+        item_way,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="options != null">
+        options,
+      </if>
+      <if test="rightKeyId != null">
+        right_key_id,
+      </if>
+      <if test="analysis != null">
+        analysis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemTypeId != null">
+        #{itemTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="itemWayId != null">
+        #{itemWayId,jdbcType=INTEGER},
+      </if>
+      <if test="itemWay != null">
+        #{itemWay,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="options != null">
+        #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="rightKeyId != null">
+        #{rightKeyId,jdbcType=VARCHAR},
+      </if>
+      <if test="analysis != null">
+        #{analysis,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.sys.ItemBank.entity.ItemBank">
+    update s_item_bank
+    <set>
+      <if test="itemTypeId != null">
+        item_type_id = #{itemTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="itemWayId != null">
+        item_way_id = #{itemWayId,jdbcType=INTEGER},
+      </if>
+      <if test="itemWay != null">
+        item_way = #{itemWay,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="options != null">
+        options = #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="rightKeyId != null">
+        right_key_id = #{rightKeyId,jdbcType=VARCHAR},
+      </if>
+      <if test="analysis != null">
+        analysis = #{analysis,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="itemTypeId != null">
+         and item_type_id = #{itemTypeId,jdbcType=INTEGER}
+      </if>
+      <if test="itemType != null">
+         and item_type = #{itemType,jdbcType=VARCHAR}
+      </if>
+      <if test="itemWayId != null">
+         and item_way_id = #{itemWayId,jdbcType=INTEGER}
+      </if>
+      <if test="itemWay != null">
+         and item_way = #{itemWay,jdbcType=VARCHAR}
+      </if>
+      <if test="content != null">
+         and content = #{content,jdbcType=VARCHAR}
+      </if>
+      <if test="options != null">
+         and options = #{options,jdbcType=VARCHAR}
+      </if>
+      <if test="rightKeyId != null">
+         and right_key_id = #{rightKeyId,jdbcType=VARCHAR}
+      </if>
+      <if test="analysis != null">
+         and analysis = #{analysis,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from s_item_bank
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteLogicByIds">
+    update s_item_bank set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+
+  <select id="selectAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from s_item_bank ORDER BY RAND()
+    <if test="limit != null">
+      limit #{limit}
+    </if>
+  </select>
+</mapper>

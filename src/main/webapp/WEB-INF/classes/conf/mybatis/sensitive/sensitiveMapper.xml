@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cen.sensitive.dao.sensitiveDao" >
+  <resultMap id="BaseResultMap" type="com.cen.sensitive.entity.sensitive" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="words" property="words" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, words
+  </sql>
+  <!-- 后台查询列表所有数据 -->
+  <select id="selectList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_sensitive
+    where 
+    words LIKE concat(concat("%",#{words}),"%") 
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select>
+  <!-- 分页查询用户行数 -->
+  <select id="selectListCount" resultType="java.lang.Integer">
+    select
+    count(id) as count
+    from sys_sensitive
+    where 
+    words LIKE concat(concat("%",#{words}),"%") 
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_sensitive
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultType="String">
+    select 
+    words
+    from sys_sensitive
+  </select>
+  <select id="selectByWords" resultType="java.lang.Integer">
+    select 
+    count(*)
+    from sys_sensitive 
+    where words=#{words}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_sensitive
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cen.sensitive.entity.sensitive" >
+    insert into sys_sensitive (id, words)
+    values (#{id,jdbcType=INTEGER}, #{words,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.sensitive.entity.sensitive" >
+    insert into sys_sensitive
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="words != null" >
+        words,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="words != null" >
+        #{words,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.sensitive.entity.sensitive" >
+    update sys_sensitive
+    <set >
+      <if test="words != null" >
+        words = #{words,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.sensitive.entity.sensitive" >
+    update sys_sensitive
+    set words = #{words,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

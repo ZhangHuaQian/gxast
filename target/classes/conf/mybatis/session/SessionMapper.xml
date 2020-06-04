@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.session.dao.SessionDao">
+  <resultMap id="BaseResultMap" type="com.cen.session.entity.Session">
+    <id column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="sname" jdbcType="VARCHAR" property="sname" />
+    <result column="smasterid" jdbcType="VARCHAR" property="smasterid" />
+    <result column="sprofile" jdbcType="VARCHAR" property="sprofile" />
+    <result column="sstatement" jdbcType="VARCHAR" property="sstatement" />
+    <result column="stopiccount" jdbcType="INTEGER" property="stopiccount" />
+    <result column="sclickcount" jdbcType="INTEGER" property="sclickcount" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="smaster" jdbcType="VARCHAR" property="smaster" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sid, sname, smasterid, sProfile, sstatement, stopiccount, sclickcount,smaster, `type`
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_session
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_session
+  </select>
+
+  <!-- 查询列表所有数据 -->
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from t_session
+    where sid>0
+    <if test="sname != null and sname != ''">
+      and sname LIKE concat(concat("%",#{sname}),"%")
+    </if>
+    <if test="sprofile != null and sprofile != ''">
+      and sprofile LIKE concat(concat("%",#{sprofile}),"%")
+    </if>
+    order by sid desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+  <!-- 分页查询用户行数 -->
+  <select id="selectListCount" resultType="java.lang.Integer">
+    select
+    count(sid) as count
+    from t_session
+    where sid>0
+    <if test="sname != null and sname != ''">
+      and sname LIKE concat(concat("%",#{sname}),"%")
+    </if>
+    <if test="sprofile != null and sprofile != ''">
+      and sprofile LIKE concat(concat("%",#{sprofile}),"%")
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_session
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cen.session.entity.Session">
+    insert into t_session (sid, sname, smasterid, 
+      sProfile, sstatement, stopiccount, sclickcount,smaster,`type`)
+    values (#{sid,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}, #{smasterid,jdbcType=VARCHAR},
+      #{sprofile,jdbcType=VARCHAR}, #{sstatement,jdbcType=VARCHAR}, #{stopiccount,jdbcType=INTEGER}, 
+      #{sclickcount,jdbcType=INTEGER},#{smaster,jdbcType=VARCHAR},#{type,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.session.entity.Session">
+    insert into t_session
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="smasterid != null">
+        smasterid,
+      </if>
+      <if test="sprofile != null">
+        sProfile,
+      </if>
+      <if test="sstatement != null">
+        sstatement,
+      </if>
+      <if test="stopiccount != null">
+        stopiccount,
+      </if>
+      <if test="sclickcount != null">
+        sclickcount,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="smaster != null">
+        smaster,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="smasterid != null">
+        #{smasterid,jdbcType=VARCHAR},
+      </if>
+      <if test="sprofile != null">
+        #{sprofile,jdbcType=VARCHAR},
+      </if>
+      <if test="sstatement != null">
+        #{sstatement,jdbcType=VARCHAR},
+      </if>
+      <if test="stopiccount != null">
+        #{stopiccount,jdbcType=INTEGER},
+      </if>
+      <if test="sclickcount != null">
+        #{sclickcount,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="smaster != null">
+        #{smaster,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.session.entity.Session">
+    update t_session
+    <set>
+      <if test="sname != null">
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="smasterid != null">
+        smasterid = #{smasterid,jdbcType=VARCHAR},
+      </if>
+      <if test="sprofile != null">
+        sProfile = #{sprofile,jdbcType=VARCHAR},
+      </if>
+      <if test="sstatement != null">
+        sstatement = #{sstatement,jdbcType=VARCHAR},
+      </if>
+      <if test="stopiccount != null">
+        stopiccount = #{stopiccount,jdbcType=INTEGER},
+      </if>
+      <if test="sclickcount != null">
+        sclickcount = #{sclickcount,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="smaster != null">
+        smaster = #{smaster,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.session.entity.Session">
+    update t_session
+    set sname = #{sname,jdbcType=VARCHAR},
+      smasterid = #{smasterid,jdbcType=VARCHAR},
+      sProfile = #{sprofile,jdbcType=VARCHAR},
+      sstatement = #{sstatement,jdbcType=VARCHAR},
+      stopiccount = #{stopiccount,jdbcType=INTEGER},
+      sclickcount = #{sclickcount,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=INTEGER},
+      smaster = #{smaster,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>

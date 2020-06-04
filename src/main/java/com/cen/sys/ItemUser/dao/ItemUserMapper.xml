@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.sys.ItemUser.dao.ItemUserMapper">
+  <resultMap id="BaseResultMap" type="com.cen.sys.ItemUser.entity.ItemUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="s_name" jdbcType="VARCHAR" property="sName" />
+    <result column="s_age" jdbcType="INTEGER" property="sAge" />
+    <result column="t_name" jdbcType="VARCHAR" property="tName" />
+    <result column="t_tel" jdbcType="VARCHAR" property="tTel" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="s_class" jdbcType="VARCHAR" property="sClass" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, s_name, s_age, t_name, t_tel, school, s_class, address, create_time, score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_item_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_item_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.cen.sys.ItemUser.entity.ItemUser">
+    insert into s_item_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sName != null">
+        s_name,
+      </if>
+      <if test="sAge != null">
+        s_age,
+      </if>
+      <if test="tName != null">
+        t_name,
+      </if>
+      <if test="tTel != null">
+        t_tel,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="sClass != null">
+        s_class,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sName != null">
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sAge != null">
+        #{sAge,jdbcType=INTEGER},
+      </if>
+      <if test="tName != null">
+        #{tName,jdbcType=VARCHAR},
+      </if>
+      <if test="tTel != null">
+        #{tTel,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="sClass != null">
+        #{sClass,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.sys.ItemUser.entity.ItemUser">
+    update s_item_user
+    <set>
+      <if test="sName != null">
+        s_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sAge != null">
+        s_age = #{sAge,jdbcType=INTEGER},
+      </if>
+      <if test="tName != null">
+        t_name = #{tName,jdbcType=VARCHAR},
+      </if>
+      <if test="tTel != null">
+        t_tel = #{tTel,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="sClass != null">
+        s_class = #{sClass,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="sName != null">
+         and s_name = #{sName,jdbcType=VARCHAR}
+      </if>
+      <if test="sAge != null">
+         and s_age = #{sAge,jdbcType=INTEGER}
+      </if>
+      <if test="tName != null">
+         and t_name = #{tName,jdbcType=VARCHAR}
+      </if>
+      <if test="tTel != null">
+         and t_tel = #{tTel,jdbcType=VARCHAR}
+      </if>
+      <if test="school != null">
+         and school = #{school,jdbcType=VARCHAR}
+      </if>
+      <if test="sClass != null">
+         and s_class = #{sClass,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+         and address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+         and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="score != null">
+         and score = #{score,jdbcType=INTEGER}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from s_item_user
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteLogicByIds">
+    update s_item_user set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+
+  <select id="selectByUnameAndTnameAndTtel" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from s_item_user
+    where s_name = #{s_name}
+    and t_name = #{t_name}
+    and t_tel = #{t_tel}
+  </select>
+</mapper>

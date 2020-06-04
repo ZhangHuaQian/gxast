@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.Message.dao.MessageMapper">
+  <resultMap id="BaseResultMap" type="com.cen.Message.entity.Message">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sendId" jdbcType="VARCHAR" property="sendid" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="messageUrl" jdbcType="VARCHAR" property="messageurl" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="groups" jdbcType="VARCHAR" property="groups" />
+    <result column="postDate" jdbcType="TIMESTAMP" property="postdate" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sendId, message, title, messageUrl, type, groups, postDate, status, startTime, 
+    endTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!--根据传入的参数获取私信消息-->
+  <select id="getMyPrivateMessage" resultType="java.util.Map" parameterType="java.util.Map">
+    select
+    t_message.id id, t_message.sendId sendId, t_message.message message,
+    t_message.title title, t_message.messageUrl messageUrl, t_message.type type,
+    t_message.groups groups, t_message.postDate postDate, t_message.status status,
+    t_message.startTime startTime,t_message.endTime endTime,statue,sys_user.name sendName
+    from t_message
+    left join sys_user on (t_message.sendId = sys_user.id)
+    left join t_messagelog on (t_message.id = t_messagelog.messageId)
+    where
+    t_message.id in (
+    select messageId
+    from t_messagelog
+    where recId = #{messagelog.recid}
+    <if test="messagelog.statue!=null">
+      AND statue = #{messagelog.statue}
+    </if>
+    <if test="messagelog.statue==null">
+      AND statue in (0,1)
+    </if>
+    )
+   <!-- and status = '0' -->
+    and t_message.id = t_messagelog.messageId
+    and recId = #{messagelog.recid}
+    <if test="thistimerangestart!= null">
+      and postDate >=#{thistimerangestart,jdbcType=TIMESTAMP}
+    </if>
+    <if test="thistimerangeend!= null">
+      and #{thistimerangeend,jdbcType=TIMESTAMP}>= postDate
+    </if>
+    order by t_message.id desc
+    <if test="page!=null and limit!=null">
+      limit #{page,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="getMyMessage" resultType="java.util.Map" parameterType="java.util.Map">
+    select
+    t_message.id id, t_message.sendId sendId, t_message.message message,
+    t_message.title title, t_message.messageUrl messageUrl, t_message.type type,
+    t_message.groups groups, t_message.postDate postDate, t_message.status status,
+    t_message.startTime startTime,t_message.endTime endTime,statue,sys_user.name sendName
+    from t_message
+    left join sys_user on (t_message.sendId = sys_user.id)
+    left join t_messagelog on (t_message.id = t_messagelog.messageId)
+    where
+    t_message.id in (
+    select messageId
+    from t_messagelog
+    where recId = #{messagelog.recid}
+    <if test="messagelog.statue!=null">
+      AND statue = #{messagelog.statue}
+    </if>
+    <if test="messagelog.statue==null">
+      AND statue in (0,1)
+    </if>
+    )
+    <!-- and status = '0' -->
+    and t_message.id = t_messagelog.messageId
+    and recId = #{messagelog.recid}
+    <if test="thistimerangestart!= null">
+      and postDate >=#{thistimerangestart,jdbcType=TIMESTAMP}
+    </if>
+    <if test="thistimerangeend!= null">
+      and #{thistimerangeend,jdbcType=TIMESTAMP}>= postDate
+    </if>
+    order by t_message.status asc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.cen.Message.entity.Message">
+    insert into t_message (id, sendId, message, 
+      title, messageUrl, type, 
+      groups, postDate, status, 
+      startTime, endTime)
+    values (#{id,jdbcType=INTEGER}, #{sendid,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR},
+      #{title,jdbcType=VARCHAR}, #{messageurl,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{groups,jdbcType=VARCHAR}, #{postdate,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP})
+  </insert> 
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.cen.Message.entity.Message">
+    insert into t_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sendid != null">
+        sendId,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="messageurl != null">
+        messageUrl,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="groups != null">
+        groups,
+      </if>
+      <if test="postdate != null">
+        postDate,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sendid != null">
+        #{sendid,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="messageurl != null">
+        #{messageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="groups != null">
+        #{groups,jdbcType=VARCHAR},
+      </if>
+      <if test="postdate != null">
+        #{postdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.Message.entity.Message">
+    update t_message
+    <set>
+      <if test="sendid != null">
+        sendId = #{sendid,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="messageurl != null">
+        messageUrl = #{messageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="groups != null">
+        groups = #{groups,jdbcType=VARCHAR},
+      </if>
+      <if test="postdate != null">
+        postDate = #{postdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.Message.entity.Message">
+    update t_message
+    set sendId = #{sendid,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      messageUrl = #{messageurl,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      groups = #{groups,jdbcType=VARCHAR},
+      postDate = #{postdate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

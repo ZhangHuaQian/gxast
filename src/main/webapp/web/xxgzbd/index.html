@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html style="font-size: 36px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>防疫科普_我们在一起，打赢这一仗——抗击新型肺炎疫情在行动</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/ej.css">
+</head>
+<style>@media print {
+    #ghostery-purple-box {
+        display: none !important
+    }
+}</style>
+<body class="sub-txt">
+<div class="banner domPc" style=""></div>
+<div class="domMobile" style="">
+    <div class="banner"><img src="./images/banner.png" ></div>
+</div>
+<div class="container cont">
+    <div class="box clearfix">
+        <div class="main">
+            <div class="tit">防疫科普</div>
+            <ul class="list">
+                <li data-pubtime="2020-03-11 14:47:29">
+                    <a href="./news10.html" target="_blank">
+                        居家防疫如何科学作息？六妙招提高免疫力
+                    </a>
+                </li>
+                <li data-pubtime="2020-03-11 14:42:05">
+                    <a href="./news11.html" target="_blank">
+                        疫情期间，乘坐交通工具如何做好自我防护？
+                    </a>
+                </li>
+                <li data-pubtime="2020-03-11 14:36:11">
+                    <a href="./news12.html" target="_blank">
+                        预防新冠肺炎，上班族一定要了解这三件事
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news1.html" target="_blank">
+                        N95是什么意思？口罩可以戴多久？专家为你解读
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news2.html" target="_blank">
+                        防疫权威读物来了！这份指南请认真阅读
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news3.html" target="_blank">
+                        关于“新型冠状病毒可能粪口传播”，钟南山回应了
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news4.html" target="_blank">
+                        家中门把手上首次测出病毒核酸！这些家居清洁盲点一定要注意！
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news5.html" target="_blank">
+                        如何处理这些口罩问题？
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news6.html" target="_blank">
+                        世卫组织关于新型冠状病毒的四问四答
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news7.html" target="_blank">
+                        危险！病毒存活可达5天，出现这些症状必须去医院！
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news8.html" target="_blank">
+                        新型冠状病毒问与答
+                    </a>
+                </li>
+                <li data-pubtime="2020-02-04 15:47:29">
+                    <a href="./news9.html" target="_blank">
+                        与患者同乘2小时大巴后被感染！乘坐交通工具该如何保护自己？
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="footer">
+    <!--    <p>Copyright © 2000 - 2020 XINHUANET.com　All Rights Reserved.</p>-->
+    <p>制作单位：广西科学技术普及传播中心</p>
+    <p>版权所有：广西科学技术普及传播中心</p>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    $(function () {
+        if (IsPC()) {
+            $('.domPc').attr('style','display:block')
+            $('.domMobile').attr('style','display:none')
+        } else {
+            console.log(2)
+            $('.domPc').attr('style','display:none')
+            $('.domMobile').attr('style','display:block')
+        }
+    })
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+            "SymbianOS", "Windows Phone",
+            "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+</script>
+</html>

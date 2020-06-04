@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cen.operateLog.dao.OperatelogDao" >
+  <resultMap id="BaseResultMap" type="com.cen.operateLog.entity.Operatelog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="custid" property="custid" jdbcType="VARCHAR" />
+    <result column="custname" property="custname" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="modulename" property="modulename" jdbcType="VARCHAR" />
+    <result column="operatedesc" property="operatedesc" jdbcType="VARCHAR" />
+    <result column="ipaddress" property="ipaddress" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, custid, custname, realname, modulename, operatedesc, ipaddress, createtime, is_del
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from operatelog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 查询日志列表 -->
+   <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select 
+     <include refid="Base_Column_List" />
+     from operatelog 
+     where is_del = 0
+     <if test="start != null and end != null">
+       and createtime between #{start} and #{end}
+     </if> 
+     <if test="custname != null and custname != ''">
+       and custname LIKE concat(concat("%",#{custname}),"%")
+     </if>
+       order by createtime desc
+     <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select> 
+  
+  <!-- 查询列表数 -->
+   <select id="selectListCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select
+    count(id) as count
+    from operatelog
+    where is_del = 0
+     <if test="start != null and end != null">
+       and createtime between #{start} and #{end}
+     </if> 
+    <if test="custname != null and custname != ''">
+     and custname LIKE concat(concat("%",#{custname}),"%")
+    </if>
+  </select>  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from operatelog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cen.operateLog.entity.Operatelog" >
+    insert into operatelog (id, custid, custname, 
+      realname, modulename, operatedesc, 
+      ipaddress, createtime, is_del
+      )
+    values (#{id,jdbcType=INTEGER}, #{custid,jdbcType=VARCHAR}, #{custname,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{modulename,jdbcType=VARCHAR}, #{operatedesc,jdbcType=VARCHAR}, 
+      #{ipaddress,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{isDel,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.operateLog.entity.Operatelog" >
+    insert into operatelog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="custid != null" >
+        custid,
+      </if>
+      <if test="custname != null" >
+        custname,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="modulename != null" >
+        modulename,
+      </if>
+      <if test="operatedesc != null" >
+        operatedesc,
+      </if>
+      <if test="ipaddress != null" >
+        ipaddress,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="custid != null" >
+        #{custid,jdbcType=VARCHAR},
+      </if>
+      <if test="custname != null" >
+        #{custname,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="modulename != null" >
+        #{modulename,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedesc != null" >
+        #{operatedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddress != null" >
+        #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.operateLog.entity.Operatelog" >
+    update operatelog
+    <set >
+      <if test="custid != null" >
+        custid = #{custid,jdbcType=VARCHAR},
+      </if>
+      <if test="custname != null" >
+        custname = #{custname,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="modulename != null" >
+        modulename = #{modulename,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedesc != null" >
+        operatedesc = #{operatedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddress != null" >
+        ipaddress = #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.operateLog.entity.Operatelog" >
+    update operatelog
+    set custid = #{custid,jdbcType=VARCHAR},
+      custname = #{custname,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      modulename = #{modulename,jdbcType=VARCHAR},
+      operatedesc = #{operatedesc,jdbcType=VARCHAR},
+      ipaddress = #{ipaddress,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=DATE},
+      is_del = #{isDel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

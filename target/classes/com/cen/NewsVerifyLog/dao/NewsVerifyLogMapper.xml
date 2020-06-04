@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.NewsVerifyLog.dao.NewsVerifyLogMapper">
+  <resultMap id="BaseResultMap" type="com.cen.NewsVerifyLog.entity.NewsVerifyLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="news_id" jdbcType="INTEGER" property="newsId" />
+    <result column="news_type" jdbcType="VARCHAR" property="newsType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="initiator_id" jdbcType="VARCHAR" property="initiatorId" />
+    <result column="receiver_id" jdbcType="VARCHAR" property="receiverId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, news_id, news_type, create_time, initiator_id, receiver_id, status, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news_verify_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news_verify_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cen.NewsVerifyLog.entity.NewsVerifyLog">
+    insert into news_verify_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="newsId != null">
+        news_id,
+      </if>
+      <if test="newsType != null">
+        news_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="initiatorId != null">
+        initiator_id,
+      </if>
+      <if test="receiverId != null">
+        receiver_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="newsId != null">
+        #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="newsType != null">
+        #{newsType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="initiatorId != null">
+        #{initiatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverId != null">
+        #{receiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.NewsVerifyLog.entity.NewsVerifyLog">
+    update news_verify_log
+    <set>
+      <if test="newsId != null">
+        news_id = #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="newsType != null">
+        news_type = #{newsType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="initiatorId != null">
+        initiator_id = #{initiatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverId != null">
+        receiver_id = #{receiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="newsId != null">
+         and news_id = #{newsId,jdbcType=INTEGER}
+      </if>
+      <if test="newsType != null">
+         and news_type = #{newsType,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+         and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="initiatorId != null">
+         and initiator_id = #{initiatorId,jdbcType=VARCHAR}
+      </if>
+      <if test="receiverId != null">
+         and receiver_id = #{receiverId,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+         and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+         and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from news_verify_log
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteLogicByIds">
+    update news_verify_log set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+
+  <!--查询新闻的审核状态-->
+  <select id="selectVerifyByNid" resultType="java.util.Map">
+    select nvl.*, su.`name` from `news_verify_log` nvl
+    join `sys_user` su
+    where (nvl.`receiver_id` = su.`id` or nvl.`initiator_id`=su.`id`)
+    and news_id = #{nId}
+    and news_type = #{nType}
+    order by create_time desc
+  </select>
+
+</mapper>

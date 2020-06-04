@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.jtyy.dao.JtyyMapper">
+  <resultMap id="BaseResultMap" type="com.cen.jtyy.entity.Jtyy">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="new_type_id" jdbcType="INTEGER" property="newTypeId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="news_cover" jdbcType="VARCHAR" property="newsCover" />
+    <result column="file" jdbcType="VARCHAR" property="file" />
+    <result column="page_view" jdbcType="INTEGER" property="pageView" />
+    <result column="praise_view" jdbcType="INTEGER" property="praiseView" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="orignfrom" property="orignfrom" jdbcType="VARCHAR" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="originUrl" property="originUrl" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, new_type_id, title, description, user_id, author, is_del, status, modify_time, 
+    create_time, news_cover, file, page_view, praise_view,content,url,orignfrom,editor,originUrl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select * from news_jtyy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from news_jtyy
+    <where>
+      <if test="title !=null">
+        title LIKE concat(concat("%",#{title}),"%")
+      </if>
+      <if test="start != null"> and date(create_time) >= #{start} </if>
+      <if test="end !=null">and #{end} >= date(create_time)</if>
+      <if test="newTypeId != null"> and new_type_id = #{newTypeId} </if>
+      and is_del=0
+    </where>
+    order by create_time desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+</select>
+  <!-- 分页查询用户行数 -->
+  <select id="selectListCount" resultType="java.lang.Integer">
+    select
+    count(id) as count
+    from news_jtyy
+    <where>
+      <if test="title !=null">
+        title LIKE concat(concat("%",#{title}),"%")
+      </if>
+      <if test="start != null"> and date(create_time) >= #{start} </if>
+      <if test="end !=null">and #{end} >= date(create_time)</if>
+      <if test="newTypeId != null"> and new_type_id=#{newTypeId} </if>
+      and is_del=0
+    </where>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from news_jtyy
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cen.jtyy.entity.Jtyy">
+    insert into news_jtyy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="newTypeId != null">
+        new_type_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="newsCover != null">
+        news_cover,
+      </if>
+      <if test="file != null">
+        file,
+      </if>
+      <if test="pageView != null">
+        page_view,
+      </if>
+      <if test="praiseView != null">
+        praise_view,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="orignfrom != null">
+        orignfrom,
+      </if>
+      <if test="editor != null">
+        editor,
+      </if>
+      <if test="originUrl != null">
+        originUrl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="newTypeId != null">
+        #{newTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newsCover != null">
+        #{newsCover,jdbcType=VARCHAR},
+      </if>
+      <if test="file != null">
+        #{file,jdbcType=VARCHAR},
+      </if>
+      <if test="pageView != null">
+        #{pageView,jdbcType=INTEGER},
+      </if>
+      <if test="praiseView != null">
+        #{praiseView,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="orignfrom != null">
+        #{orignfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null">
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="originUrl != null">
+        #{originUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.jtyy.entity.Jtyy">
+    update news_jtyy
+    <set>
+      <if test="newTypeId != null">
+        new_type_id = #{newTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newsCover != null">
+        news_cover = #{newsCover,jdbcType=VARCHAR},
+      </if>
+      <if test="file != null">
+        file = #{file,jdbcType=VARCHAR},
+      </if>
+      <if test="pageView != null">
+        page_view = #{pageView,jdbcType=INTEGER},
+      </if>
+      <if test="praiseView != null">
+        praise_view = #{praiseView,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="orignfrom != null">
+        orignfrom = #{orignfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null">
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="originUrl != null">
+        originUrl = #{originUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cen.jtyy.entity.Jtyy">
+    update news_jtyy
+    set new_type_id = #{newTypeId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      news_cover = #{newsCover,jdbcType=VARCHAR},
+      file = #{file,jdbcType=VARCHAR},
+      page_view = #{pageView,jdbcType=INTEGER},
+      praise_view = #{praiseView,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      orignfrom = #{orignfrom,jdbcType=VARCHAR},
+         editor = #{editor,jdbcType=VARCHAR},
+          originUrl = #{originUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>

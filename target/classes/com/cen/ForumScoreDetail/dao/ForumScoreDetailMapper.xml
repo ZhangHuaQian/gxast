@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.ForumScoreDetail.dao.ForumScoreDetailMapper">
+  <resultMap id="BaseResultMap" type="com.cen.ForumScoreDetail.entity.ForumScoreDetail">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="u_id" jdbcType="VARCHAR" property="uId" />
+    <result column="s_from" jdbcType="VARCHAR" property="sFrom" />
+    <result column="s_value" jdbcType="INTEGER" property="sValue" />
+    <result column="session_id" jdbcType="INTEGER" property="sessionId" />
+    <result column="t_id" jdbcType="INTEGER" property="tId" />
+    <result column="s_type" jdbcType="INTEGER" property="sType" />
+    <result column="related_user_id" jdbcType="VARCHAR" property="relatedUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <insert id="insertSelective" parameterType="com.cen.ForumScoreDetail.entity.ForumScoreDetail">
+    insert into forum_score_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="sFrom != null">
+        s_from,
+      </if>
+      <if test="sValue != null">
+        s_value,
+      </if>
+      <if test="sessionId != null">
+        session_id,
+      </if>
+      <if test="tId != null">
+        t_id,
+      </if>
+      <if test="sType != null">
+        s_type,
+      </if>
+      <if test="relatedUserId != null">
+        related_user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="sFrom != null">
+        #{sFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="sValue != null">
+        #{sValue,jdbcType=INTEGER},
+      </if>
+      <if test="sessionId != null">
+        #{sessionId,jdbcType=INTEGER},
+      </if>
+      <if test="tId != null">
+        #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="sType != null">
+        #{sType,jdbcType=INTEGER},
+      </if>
+      <if test="relatedUserId != null">
+        #{relatedUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <sql id="sql_where">
+    <where>
+      <if test="id != null">
+         and id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="uId != null">
+         and u_id = #{uId,jdbcType=VARCHAR}
+      </if>
+      <if test="sFrom != null">
+         and s_from = #{sFrom,jdbcType=VARCHAR}
+      </if>
+      <if test="sValue != null">
+         and s_value = #{sValue,jdbcType=INTEGER}
+      </if>
+      <if test="sessionId != null">
+         and session_id = #{sessionId,jdbcType=INTEGER}
+      </if>
+      <if test="tId != null">
+         and t_id = #{tId,jdbcType=INTEGER}
+      </if>
+      <if test="sType != null">
+         and s_type = #{sType,jdbcType=INTEGER}
+      </if>
+      <if test="relatedUserId != null">
+         and related_user_id = #{relatedUserId,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+         and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from forum_score_detail
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteLogicByIds">
+    update forum_score_detail set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+
+</mapper>

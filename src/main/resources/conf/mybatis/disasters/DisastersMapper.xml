@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cen.disasters.dao.DisastersDao" >
+  <resultMap id="BaseResultMap" type="com.cen.disasters.entity.Disasters" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="descript" property="descript" jdbcType="VARCHAR" />
+    <result column="video" property="video" jdbcType="VARCHAR" />
+     <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="type_value" property="typeValue" jdbcType="INTEGER" />
+    <result column="warning_level" property="warningLevel" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, descript, video, image, content, type_value, warning_level, createtime, userid, username, 
+    is_del
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_disasters
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 查询产品列表 -->
+   <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select 
+     <include refid="Base_Column_List" />
+     from sys_disasters
+     where is_del = 0 
+	<if test="did != null and did!='' ">
+     	and( (select did from sys_user where id=sys_disasters.userid) = #{did}
+     	<if test="departments != null and departments.size > 0 ">
+     		or (select did from sys_user where id=sys_disasters.userid) in
+     		<foreach item="item" index="index" collection="departments" open="(" separator="," close=")">  
+     	 		#{item}  
+     		</foreach>
+     	</if>
+     	)
+     </if>
+     <if test="title != null and title != ''">
+       and title LIKE concat(concat("%",#{title}),"%")
+     </if>
+     <if test="start != null"> and date(createtime) >= #{start} </if>
+    <if test="end !=null">and #{end} >= date(createtime)</if> 
+     
+     <if test="typeValue != null and typeValue != ''">
+       and type_value = #{typeValue}
+     </if>
+       order by createtime desc
+     <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select> 
+  
+  <!-- 根据名称查询产品列表 -->
+   <select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select 
+     <include refid="Base_Column_List" />
+     from sys_disasters
+     where is_del = 0
+     <if test="name != null and name != ''">
+       and title LIKE concat(concat("%",#{name}),"%")
+     </if>
+       order by createtime desc
+     <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select> 
+  
+  <!-- 查询列表数 -->
+   <select id="selectListCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select
+    count(id) as count
+    from sys_disasters
+    where is_del = 0 
+	<if test="did != null and did!='' ">
+     	and( (select did from sys_user where id=sys_disasters.userid) = #{did}
+     	<if test="departments != null and departments.size > 0 ">
+     		or (select did from sys_user where id=sys_disasters.userid) in
+     		<foreach item="item" index="index" collection="departments" open="(" separator="," close=")">  
+     	 		#{item}  
+     		</foreach>
+     	</if>
+     	)
+     </if>
+     <if test="title != null and title != ''">
+       and title LIKE concat(concat("%",#{title}),"%")
+     </if>
+     <if test="start != null"> and date(createtime) >= #{start} </if>
+    <if test="end !=null">and #{end} >= date(createtime)</if> 
+     <if test="typeValue != null and typeValue != ''">
+       and type_value = #{typeValue}
+     </if>
+  </select>
+  
+  <!-- 前台查询列表数据 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_disasters 
+    where 
+    is_del=0 
+    <if test="title != null and title != ''">
+       and title LIKE concat(concat("%",#{title}),"%")
+     </if>
+     <if test="typeValue != null and typeValue != ''">
+       and type_value = #{typeValue}
+     </if>
+     order by createtime desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_disasters
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cen.disasters.entity.Disasters" >
+    insert into sys_disasters (id, title, descript, video, image,
+      content, type_value, warning_level, 
+      createtime, userid, username, 
+      is_del)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, 
+      #{video,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR},
+      #{content,jdbcType=VARCHAR}, #{typeValue,jdbcType=INTEGER}, #{warningLevel,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{isDel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.disasters.entity.Disasters" >
+    insert into sys_disasters
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="descript != null" >
+        descript,
+      </if>
+      <if test="video != null" >
+        video,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="typeValue != null" >
+        type_value,
+      </if>
+      <if test="warningLevel != null" >
+        warning_level,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null" >
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null" >
+        #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="typeValue != null" >
+        #{typeValue,jdbcType=INTEGER},
+      </if>
+      <if test="warningLevel != null" >
+        #{warningLevel,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.disasters.entity.Disasters" >
+    update sys_disasters
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null" >
+        descript = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null" >
+        video = #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="typeValue != null" >
+        type_value = #{typeValue,jdbcType=INTEGER},
+      </if>
+      <if test="warningLevel != null" >
+        warning_level = #{warningLevel,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.disasters.entity.Disasters" >
+    update sys_disasters
+    set title = #{title,jdbcType=VARCHAR},
+      descript = #{descript,jdbcType=VARCHAR},
+      video = #{video,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      type_value = #{typeValue,jdbcType=INTEGER},
+      warning_level = #{warningLevel,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

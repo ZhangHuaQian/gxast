@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.NfkjXczxContest.dao.NfkjXczxContestMapper">
+  <resultMap id="BaseResultMap" type="com.cen.NfkjXczxContest.entity.NfkjXczxContest">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="item" jdbcType="VARCHAR" property="item" />
+    <result column="option_a" jdbcType="VARCHAR" property="optionA" />
+    <result column="option_b" jdbcType="VARCHAR" property="optionB" />
+    <result column="option_c" jdbcType="VARCHAR" property="optionC" />
+    <result column="option_d" jdbcType="VARCHAR" property="optionD" />
+    <result column="right_key" jdbcType="VARCHAR" property="rightKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, item, option_a, option_b, option_c, option_d, right_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from nfkj_xczx_contest
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from nfkj_xczx_contest
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cen.NfkjXczxContest.entity.NfkjXczxContest">
+    insert into nfkj_xczx_contest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="item != null">
+        item,
+      </if>
+      <if test="optionA != null">
+        option_a,
+      </if>
+      <if test="optionB != null">
+        option_b,
+      </if>
+      <if test="optionC != null">
+        option_c,
+      </if>
+      <if test="optionD != null">
+        option_d,
+      </if>
+      <if test="rightKey != null">
+        right_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="item != null">
+        #{item,jdbcType=VARCHAR},
+      </if>
+      <if test="optionA != null">
+        #{optionA,jdbcType=VARCHAR},
+      </if>
+      <if test="optionB != null">
+        #{optionB,jdbcType=VARCHAR},
+      </if>
+      <if test="optionC != null">
+        #{optionC,jdbcType=VARCHAR},
+      </if>
+      <if test="optionD != null">
+        #{optionD,jdbcType=VARCHAR},
+      </if>
+      <if test="rightKey != null">
+        #{rightKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.NfkjXczxContest.entity.NfkjXczxContest">
+    update nfkj_xczx_contest
+    <set>
+      <if test="item != null">
+        item = #{item,jdbcType=VARCHAR},
+      </if>
+      <if test="optionA != null">
+        option_a = #{optionA,jdbcType=VARCHAR},
+      </if>
+      <if test="optionB != null">
+        option_b = #{optionB,jdbcType=VARCHAR},
+      </if>
+      <if test="optionC != null">
+        option_c = #{optionC,jdbcType=VARCHAR},
+      </if>
+      <if test="optionD != null">
+        option_d = #{optionD,jdbcType=VARCHAR},
+      </if>
+      <if test="rightKey != null">
+        right_key = #{rightKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="item != null">
+         and item = #{item,jdbcType=VARCHAR}
+      </if>
+      <if test="optionA != null">
+         and option_a = #{optionA,jdbcType=VARCHAR}
+      </if>
+      <if test="optionB != null">
+         and option_b = #{optionB,jdbcType=VARCHAR}
+      </if>
+      <if test="optionC != null">
+         and option_c = #{optionC,jdbcType=VARCHAR}
+      </if>
+      <if test="optionD != null">
+         and option_d = #{optionD,jdbcType=VARCHAR}
+      </if>
+      <if test="rightKey != null">
+         and right_key = #{rightKey,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from nfkj_xczx_contest
+    <include refid="sql_where" />
+    ORDER BY RAND() limit 1
+  </select>
+  <update id="deleteLogicByIds">
+    update nfkj_xczx_contest set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+</mapper>

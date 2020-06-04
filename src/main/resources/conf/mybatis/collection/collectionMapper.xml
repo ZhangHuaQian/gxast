@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.collection.dao.collectionMapper">
+	<resultMap id="BaseResultMap" type="com.cen.collection.entity.collection">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="pid" jdbcType="VARCHAR" property="pid" />
+		<result column="uid" jdbcType="VARCHAR" property="uid" />
+		<result column="time" jdbcType="TIMESTAMP" property="time" />
+		<result column="type" jdbcType="VARCHAR" property="type" />
+	</resultMap>
+	<sql id="Base_Column_List">
+    id, pid, uid, time, type
+	</sql>
+	<select id="selectByUidPid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+		<include refid="Base_Column_List" />
+    from t_like
+    where uid = #{uid} and pid = #{pid}
+	</select>
+	<select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select 
+		l.*,p.image as image,p.name as name
+     from t_like l,t_product p
+     where l.uid = #{uid} and l.pid = p.id
+       order by time desc
+		<!-- 分页 -->
+		<if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+		<include refid="Base_Column_List" />
+    from t_like
+    where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_like
+    where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.cen.collection.entity.collection">
+    insert into t_like (id, pid, uid, 
+      time, type)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.cen.collection.entity.collection">
+    insert into t_like
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+        id,
+			</if>
+			<if test="pid != null">
+        pid,
+			</if>
+			<if test="uid != null">
+        uid,
+			</if>
+			<if test="time != null">
+        time,
+			</if>
+			<if test="type != null">
+        type,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+        #{id,jdbcType=INTEGER},
+			</if>
+			<if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+			</if>
+			<if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+			</if>
+			<if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+			</if>
+			<if test="type != null">
+        #{type,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cen.collection.entity.collection">
+    update t_like
+		<set>
+			<if test="pid != null">
+        pid = #{pid,jdbcType=VARCHAR},
+			</if>
+			<if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+			</if>
+			<if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+			</if>
+			<if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+			</if>
+		</set>
+    where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cen.collection.entity.collection">
+    update t_like
+    set pid = #{pid,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

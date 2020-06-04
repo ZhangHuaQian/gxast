@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.order.dao.orderMapper">
+  <resultMap id="BaseResultMap" type="com.cen.order.entity.order">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="logistics" jdbcType="VARCHAR" property="logistics" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="address_id" jdbcType="VARCHAR" property="addressId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="postage" jdbcType="DECIMAL" property="postage" />
+    <result column="shopcar_id" jdbcType="VARCHAR" property="shopcarId" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="regioncode" jdbcType="VARCHAR" property="regioncode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phone, name, logistics, status, address_id, address, postage, shopcar_id, remarks,user_id,product_id,createtime,regioncode
+  </sql>
+  <select id="selectByPid" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />   
+    from t_order
+    where status = 6 and user_id = #{uid} and product_id=#{productId}
+  </select>
+  <!-- 查询订单列表 -->
+   <select id="selectList" resultMap="BaseResultMap">
+     select 
+     o.*,p.name as productName,p.specifications from t_order o,t_product p
+     where 
+     o.product_id = p.id
+     <if test="status != null">
+       and o.status = #{status}  
+     </if> 
+     <if test="start != null"> and date(o.createtime) >= #{start} </if>
+     <if test="end !=null">and #{end} >= date(o.createtime)</if>
+     <if test="userId != null">
+       and o.user_id = #{userId}           
+     </if> 
+     <if test="puid != null">
+       and (select uid from t_product where id = o.product_id) = #{puid}
+     </if> 
+       order by o.createtime desc
+       <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null"> 
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_order
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cen.order.entity.order">
+  	<selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
+    insert into t_order (id, phone, name, 
+      logistics, status, address_id, 
+      address, postage, shopcar_id, 
+      remarks,user_id,product_id,regioncode)
+    values (#{id,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{logistics,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{addressId,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{postage,jdbcType=DECIMAL}, #{shopcarId,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR},#{productId,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+      #{regioncode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.order.entity.order">
+  	<selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="logistics != null">
+        logistics,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="addressId != null">
+        address_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="postage != null">
+        postage,
+      </if>
+      <if test="shopcarId != null">
+        shopcar_id,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="regioncode != null">
+        regioncode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logistics != null">
+        #{logistics,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addressId != null">
+        #{addressId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postage != null">
+        #{postage,jdbcType=DECIMAL},
+      </if>
+      <if test="shopcarId != null">
+        #{shopcarId,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regioncode != null">
+        #{regioncode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.order.entity.order">
+    update t_order
+    <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logistics != null">
+        logistics = #{logistics,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addressId != null">
+        address_id = #{addressId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postage != null">
+        postage = #{postage,jdbcType=DECIMAL},
+      </if>
+      <if test="shopcarId != null">
+        shopcar_id = #{shopcarId,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="regioncode != null">
+        regioncode = #{regioncode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.order.entity.order">
+    update t_order
+    set phone = #{phone,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      logistics = #{logistics,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      address_id = #{addressId,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      postage = #{postage,jdbcType=DECIMAL},
+      shopcar_id = #{shopcarId,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      regioncode = #{regioncode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

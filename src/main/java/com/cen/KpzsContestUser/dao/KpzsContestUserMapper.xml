@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.KpzsContestUser.dao.KpzsContestUserMapper">
+  <resultMap id="BaseResultMap" type="com.cen.KpzsContestUser.entity.KpzsContestUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="is_lock" jdbcType="INTEGER" property="isLock" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, openid, create_time, is_lock
+  </sql>
+
+  <select id="selectByOpenid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from kpzs_contest_user where openid = #{openid}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from kpzs_contest_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from kpzs_contest_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cen.KpzsContestUser.entity.KpzsContestUser">
+    insert into kpzs_contest_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isLock != null">
+        is_lock,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLock != null">
+        #{isLock,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.KpzsContestUser.entity.KpzsContestUser">
+    update kpzs_contest_user
+    <set>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLock != null">
+        is_lock = #{isLock,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="openid != null">
+         and openid = #{openid,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+         and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isLock != null">
+         and is_lock = #{isLock,jdbcType=INTEGER}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from kpzs_contest_user
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteLogicByIds">
+    update kpzs_contest_user set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+</mapper>

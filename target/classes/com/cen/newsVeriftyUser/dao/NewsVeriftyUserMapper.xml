@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.newsVeriftyUser.dao.NewsVeriftyUserMapper">
+  <resultMap id="BaseResultMap" type="com.cen.newsVeriftyUser.entity.NewsVeriftyUser">
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="news_id" jdbcType="INTEGER" property="newsId" />
+    <result column="new_type" jdbcType="VARCHAR" property="newType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="initiator_id" jdbcType="VARCHAR" property="initiatorId" />
+    <result column="initiator" jdbcType="VARCHAR" property="initiator" />
+    <result column="initiator_department_id" jdbcType="INTEGER" property="initiatorDepartmentId" />
+    <result column="initiator_department" jdbcType="VARCHAR" property="initiatorDepartment" />
+    <result column="receiver_id" jdbcType="VARCHAR" property="receiverId" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="receiver_department_id" jdbcType="INTEGER" property="receiverDepartmentId" />
+    <result column="receiver_department" jdbcType="VARCHAR" property="receiverDepartment" />
+    <result column="process" jdbcType="VARCHAR" property="process" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uuid, news_id, new_type,create_time, initiator_id, initiator, initiator_department_id, initiator_department,
+    receiver_id, receiver, receiver_department_id, receiver_department, process, status,remark
+  </sql>
+
+
+  <select id="selectByNid" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from news_verifty_user
+    where news_id = #{nId}
+    and new_type = #{nType}
+  </select>
+
+
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news_verifty_user
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from news_verifty_user
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="uuid" parameterType="com.cen.newsVeriftyUser.entity.NewsVeriftyUser">
+    <selectKey keyProperty="uuid" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as uuid from dual
+    </selectKey>
+    insert into news_verifty_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="newsId != null">
+        news_id,
+      </if>
+      <if test="newType != null">
+        new_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="initiatorId != null">
+        initiator_id,
+      </if>
+      <if test="initiator != null">
+        initiator,
+      </if>
+      <if test="initiatorDepartmentId != null">
+        initiator_department_id,
+      </if>
+      <if test="initiatorDepartment != null">
+        initiator_department,
+      </if>
+      <if test="receiverId != null">
+        receiver_id,
+      </if>
+      <if test="receiver != null">
+        receiver,
+      </if>
+      <if test="receiverDepartmentId != null">
+        receiver_department_id,
+      </if>
+      <if test="receiverDepartment != null">
+        receiver_department,
+      </if>
+      <if test="process != null">
+        process,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="newsId != null">
+        #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="newType != null">
+        #{newType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="initiatorId != null">
+        #{initiatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="initiator != null">
+        #{initiator,jdbcType=VARCHAR},
+      </if>
+      <if test="initiatorDepartmentId != null">
+        #{initiatorDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="initiatorDepartment != null">
+        #{initiatorDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverId != null">
+        #{receiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverDepartmentId != null">
+        #{receiverDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverDepartment != null">
+        #{receiverDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="process != null">
+        #{process,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.newsVeriftyUser.entity.NewsVeriftyUser">
+    update news_verifty_user
+    <set>
+      <if test="newsId != null">
+        news_id = #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="newType != null">
+        new_type = #{newType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="initiatorId != null">
+        initiator_id = #{initiatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="initiator != null">
+        initiator = #{initiator,jdbcType=VARCHAR},
+      </if>
+      <if test="initiatorDepartmentId != null">
+        initiator_department_id = #{initiatorDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="initiatorDepartment != null">
+        initiator_department = #{initiatorDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverId != null">
+        receiver_id = #{receiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverDepartmentId != null">
+        receiver_department_id = #{receiverDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverDepartment != null">
+        receiver_department = #{receiverDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="process != null">
+        process = #{process,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="newsId != null">
+         and news_id = #{newsId,jdbcType=INTEGER}
+      </if>
+      <if test="newType != null">
+        and new_type = #{newType,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+         and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="start != null"> and date(create_time) >= #{start} </if>
+      <if test="end !=null">and #{end} >= date(create_time)</if>
+      <if test="initiatorId != null">
+         and initiator_id = #{initiatorId,jdbcType=VARCHAR}
+      </if>
+      <if test="initiator != null">
+         and initiator = #{initiator,jdbcType=VARCHAR}
+      </if>
+      <if test="initiatorDepartmentId != null">
+         and initiator_department_id = #{initiatorDepartmentId,jdbcType=INTEGER}
+      </if>
+      <if test="initiatorDepartment != null">
+         and initiator_department = #{initiatorDepartment,jdbcType=VARCHAR}
+      </if>
+      <if test="receiverId != null">
+         and receiver_id = #{receiverId,jdbcType=VARCHAR}
+      </if>
+      <if test="receiver != null">
+         and receiver = #{receiver,jdbcType=VARCHAR}
+      </if>
+      <if test="receiverDepartmentId != null">
+         and receiver_department_id = #{receiverDepartmentId,jdbcType=INTEGER}
+      </if>
+      <if test="receiverDepartment != null">
+         and receiver_department = #{receiverDepartment,jdbcType=VARCHAR}
+      </if>
+      <if test="process != null">
+         and process = #{process,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+         and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from news_verifty_user
+    <include refid="sql_where" />
+  </select>
+  <select id="selectCanVeriftyList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from news_verifty_user
+    <where>
+      <if test="newsId != null">
+        and news_id = #{newsId,jdbcType=INTEGER}
+      </if>
+      <if test="newType != null">
+        and new_type = #{newType,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="initiatorId != null">
+        and initiator_id = #{initiatorId,jdbcType=VARCHAR}
+      </if>
+      <if test="initiator != null">
+        and initiator = #{initiator,jdbcType=VARCHAR}
+      </if>
+      <if test="initiatorDepartmentId != null">
+        and initiator_department_id = #{initiatorDepartmentId,jdbcType=INTEGER}
+      </if>
+      <if test="initiatorDepartment != null">
+        and initiator_department = #{initiatorDepartment,jdbcType=VARCHAR}
+      </if>
+      <if test="receiverId != null">
+        and (receiver_id = #{receiverId,jdbcType=VARCHAR} or receiver_id is null or receiver_id = '')
+      </if>
+      <if test="receiver != null">
+        and receiver = #{receiver,jdbcType=VARCHAR}
+      </if>
+      <if test="receiverDepartmentId != null">
+        and receiver_department_id = #{receiverDepartmentId,jdbcType=INTEGER}
+      </if>
+      <if test="receiverDepartment != null">
+        and receiver_department = #{receiverDepartment,jdbcType=VARCHAR}
+      </if>
+      <if test="process != null">
+        and process = #{process,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <update id="deleteLogicByIds">
+    update news_verifty_user set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+
+
+</mapper>

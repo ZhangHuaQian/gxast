@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+
+	<!-- jedis连接池配置 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="${redis.maxIdle}" />
+		<property name="minIdle" value="${redis.minIdle}" />
+		<property name="maxWaitMillis" value="${redis.maxWait}" />
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
+		<property name="testWhileIdle" value="${redis.testWhileIdle}" />
+		<property name="maxTotal" value="${redis.maxTotal}" />
+		<property name="blockWhenExhausted" value="true" />
+	</bean>
+
+	<!-- jedis连接工程的配置 -->
+	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<property name="hostName" value="${redis.host}" />
+		<property name="port" value="${redis.port}" />
+		<property name="poolConfig" ref="jedisPoolConfig" />
+		<property name="password" value="${redis.password}" />
+		<property name="usePool" value="true"/>
+		<property name="timeout" value="${redis.timeout}"></property>
+	</bean>
+
+	<!-- redisTemplate配置 -->
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory" ref="jedisConnectionFactory" />
+		<!--如果不配置Serializer，那么存储的时候缺省使用String，如果用User类型存储，那么会提示错误User can't cast to String！！  -->
+		<property name="keySerializer" >
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+		<property name="valueSerializer" >
+			<bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer" />
+		</property>
+		<property name="hashKeySerializer">
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+		</property>
+		<property name="hashValueSerializer">
+			<bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/>
+		</property>
+		<!--开启事务 , 如果启用事务 redisTemplateUtil 一定要加上事务注解 否则会释放不了连接池连接-->
+		<property name="enableTransactionSupport" value="true"></property>
+	</bean>
+
+
+	<!--自定义redis工具类,在需要缓存的地方注入此类  -->
+	<bean id="redisTemplateUtil" class="com.cen.common.cache.RedisTemplateUtil">
+		<property name="redisTemplate" ref="redisTemplate" />
+	</bean>
+
+</beans>

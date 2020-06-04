@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.city.dao.cityMapper">
+  <resultMap id="BaseResultMap" type="com.cen.city.entity.city">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+    <result column="province_name" jdbcType="VARCHAR" property="provinceName" />
+    <result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="county_id" jdbcType="VARCHAR" property="countyId" />
+    <result column="county_name" jdbcType="VARCHAR" property="countyName" />
+    <result column="town_id" jdbcType="VARCHAR" property="townId" />
+    <result column="town_name" jdbcType="VARCHAR" property="townName" />
+    <result column="village_id" jdbcType="VARCHAR" property="villageId" />
+    <result column="village_name" jdbcType="VARCHAR" property="villageName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, province_id, province_name, city_id, city_name, county_id, county_name, town_id, 
+    town_name, village_id, village_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gx_city
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByVid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gx_city 
+    where village_id = #{vid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gx_city
+    where 
+    province_id = #{provinceId}
+    <if test="cityId == null and countyId == null and townId == null and villageId == null">
+    	GROUP BY city_id 
+    </if>   
+    <if test="cityId !=null"> 
+     and city_id = #{cityId} GROUP BY county_id 
+    </if> 
+    <if test="countyId !=null">  
+     and county_id = #{countyId} GROUP BY town_id
+    </if> 
+    <if test="townId !=null"> 
+     and town_id = #{townId} GROUP BY village_id
+    </if>
+    <if test="villageId !=null"> 
+     and village_id = #{villageId} )
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from gx_city
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cen.city.entity.city">
+    insert into gx_city (id, province_id, province_name, 
+      city_id, city_name, county_id, 
+      county_name, town_id, town_name, 
+      village_id, village_name)
+    values (#{id,jdbcType=VARCHAR}, #{provinceId,jdbcType=VARCHAR}, #{provinceName,jdbcType=VARCHAR}, 
+      #{cityId,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, #{countyId,jdbcType=VARCHAR}, 
+      #{countyName,jdbcType=VARCHAR}, #{townId,jdbcType=VARCHAR}, #{townName,jdbcType=VARCHAR}, 
+      #{villageId,jdbcType=VARCHAR}, #{villageName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.city.entity.city">
+    insert into gx_city
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="provinceName != null">
+        province_name,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="countyId != null">
+        county_id,
+      </if>
+      <if test="countyName != null">
+        county_name,
+      </if>
+      <if test="townId != null">
+        town_id,
+      </if>
+      <if test="townName != null">
+        town_name,
+      </if>
+      <if test="villageId != null">
+        village_id,
+      </if>
+      <if test="villageName != null">
+        village_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null">
+        #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="countyName != null">
+        #{countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="townId != null">
+        #{townId,jdbcType=VARCHAR},
+      </if>
+      <if test="townName != null">
+        #{townName,jdbcType=VARCHAR},
+      </if>
+      <if test="villageId != null">
+        #{villageId,jdbcType=VARCHAR},
+      </if>
+      <if test="villageName != null">
+        #{villageName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.city.entity.city">
+    update gx_city
+    <set>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null">
+        county_id = #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="countyName != null">
+        county_name = #{countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="townId != null">
+        town_id = #{townId,jdbcType=VARCHAR},
+      </if>
+      <if test="townName != null">
+        town_name = #{townName,jdbcType=VARCHAR},
+      </if>
+      <if test="villageId != null">
+        village_id = #{villageId,jdbcType=VARCHAR},
+      </if>
+      <if test="villageName != null">
+        village_name = #{villageName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.city.entity.city">
+    update gx_city
+    set province_id = #{provinceId,jdbcType=VARCHAR},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      county_id = #{countyId,jdbcType=VARCHAR},
+      county_name = #{countyName,jdbcType=VARCHAR},
+      town_id = #{townId,jdbcType=VARCHAR},
+      town_name = #{townName,jdbcType=VARCHAR},
+      village_id = #{villageId,jdbcType=VARCHAR},
+      village_name = #{villageName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

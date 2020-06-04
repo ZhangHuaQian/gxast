@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.ucenter.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.cen.ucenter.entity.User">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="phoneNum" jdbcType="VARCHAR" property="phonenum" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="userType" jdbcType="VARCHAR" property="usertype" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="oldLoginIp" jdbcType="VARCHAR" property="oldloginip" />
+    <result column="oldLoginDate" jdbcType="TIMESTAMP" property="oldlogindate" />
+    <result column="loginFlag" jdbcType="VARCHAR" property="loginflag" />
+    <result column="birthDate" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="idType" jdbcType="VARCHAR" property="idtype" />
+    <result column="idNumber" jdbcType="VARCHAR" property="idnumber" />
+    <result column="identityImg" jdbcType="VARCHAR" property="identityimg" />
+    <result column="nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="politicalStatus" jdbcType="VARCHAR" property="politicalstatus" />
+    <result column="graduateInstitutions" jdbcType="VARCHAR" property="graduateinstitutions" />
+    <result column="professional" jdbcType="VARCHAR" property="professional" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="qualification" jdbcType="VARCHAR" property="qualification" />
+    <result column="bloodType" jdbcType="VARCHAR" property="bloodtype" />
+    <result column="nativePlace" jdbcType="VARCHAR" property="nativeplace" />
+    <result column="contactAddress" jdbcType="VARCHAR" property="contactaddress" />
+    <result column="postalNumber" jdbcType="INTEGER" property="postalnumber" />
+    <result column="fixedTelephone" jdbcType="VARCHAR" property="fixedtelephone" />
+    <result column="otherContact" jdbcType="VARCHAR" property="othercontact" />
+    <result column="workTitle" jdbcType="VARCHAR" property="worktitle" />
+    <result column="workPost" jdbcType="VARCHAR" property="workpost" />
+    <result column="workName" jdbcType="VARCHAR" property="workname" />
+    <result column="workIndustry" jdbcType="VARCHAR" property="workindustry" />
+    <result column="workNature" jdbcType="VARCHAR" property="worknature" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="did" jdbcType="VARCHAR" property="did" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, loginName, password, name, sex, phoneNum, photo, email, userType, createDate, 
+    oldLoginIp, oldLoginDate, loginFlag, birthDate, idType, idNumber, identityImg, nationality, 
+    nation, politicalStatus, graduateInstitutions, professional, education, qualification, 
+    bloodType, nativePlace, contactAddress, postalNumber, fixedTelephone, otherContact, 
+    workTitle, workPost, workName, workIndustry, workNature, is_del, did, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{id,jdbcType=VARCHAR} and is_del = 0
+  </select>
+  <!-- 根据角色名称查询用户列表 -->
+  <select id="selectUserByRolePower" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM sys_user
+    where
+    did = #{did} AND id in (SELECT r.user_code FROM sys_role s JOIN sys_user_role r ON  r.role_code = s.id AND s.power = #{power})
+  </select>
+ <!-- 根据登录名称(loginName)查找用户 -->
+  <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where loginName = #{loginName,jdbcType=VARCHAR} and is_del = 0
+  </select>
+  
+  <!-- 分页查询用户 -->
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where is_del = 0
+    <if test="loginname != null and loginname != ''">
+      and loginname LIKE concat(concat("%",#{loginname}),"%")
+    </if>
+    <if test="name != null and name != ''">
+      and name LIKE concat(concat("%",#{name}),"%")
+    </if>
+
+    <!--<if test="childDepartment !=null">
+      AND did IN
+      <foreach collection="childDepartment" item="dids"  open="(" separator="," close=")">
+        #{dids.id}
+      </foreach>
+    </if>-->
+    <choose>
+      <when test="childDepartment !=null">
+        AND did IN
+        <foreach collection="childDepartment" item="dids"  open="(" separator="," close=")">
+          #{dids.id}
+        </foreach>
+      </when>
+      <otherwise>
+        AND did is NULL OR did=''
+      </otherwise>
+    </choose>
+    order by createDate desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select>
+  <!--查询userType为1的用户-->
+  <select id="selectUserList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    <where> is_del = 0
+    and userType=1
+      <if test="keyword !=null">
+        and name LIKE concat(concat("%",#{keyword}),"%")
+      </if>
+    <choose>
+      <when test="childDepartment !=null">
+        AND did IN
+        <foreach collection="childDepartment" item="dids"  open="(" separator="," close=")">
+          #{dids.id}
+        </foreach>
+      </when>
+      <otherwise>
+        AND did is NULL OR did=''
+      </otherwise>
+    </choose>
+    </where>
+    order by createDate desc
+    <if test="page!=-1 and limit!=-1">
+      limit #{page,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!--分页查询手机用户-->
+  <select id="selectUserListCount" resultType="java.lang.Integer">
+     select
+    count(id) as count
+    from sys_user
+    <where> is_del = 0
+      and userType=1
+      <if test="keyword !=null">
+        and name LIKE concat(concat("%",#{keyword}),"%")
+      </if>
+      <choose>
+        <when test="childDepartment !=null">
+          AND did IN
+          <foreach collection="childDepartment" item="dids"  open="(" separator="," close=")">
+            #{dids.id}
+          </foreach>
+        </when>
+        <otherwise>
+          AND did is NULL OR did=''
+        </otherwise>
+      </choose>
+    </where>
+    order by createDate desc
+  </select>
+
+  <!-- 分页查询用户行数 -->
+  <select id="selectListCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select
+    count(id) as count
+    from sys_user
+    where is_del = 0
+    <if test="loginname != null and loginname != ''">
+      and loginname LIKE concat(concat("%",#{loginname}),"%")
+    </if>
+    <if test="name != null and name != ''">
+      and name LIKE concat(concat("%",#{name}),"%")
+    </if>
+    <!--<if test="childDepartment !=null">
+      AND did IN
+      <foreach collection="childDepartment" item="dids"  open="(" separator="," close=")">
+        #{dids.id}
+      </foreach>
+    </if>-->
+    <choose>
+      <when test="childDepartment !=null">
+        AND did IN
+        <foreach collection="childDepartment" item="dids"  open="(" separator="," close=")">
+          #{dids.id}
+        </foreach>
+      </when>
+      <otherwise>
+        AND did is NULL OR did=''
+      </otherwise>
+    </choose>
+  </select>
+  
+  <!-- 查询总记录数 -->
+  <select id="selectCount" resultType="java.lang.Integer">
+    select count(id) as count from sys_user where is_del = 0
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cen.ucenter.entity.User">
+    <selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
+    insert into sys_user (id, loginName, password, 
+      name, sex, phoneNum, 
+      photo, email, userType, 
+      createDate, oldLoginIp, oldLoginDate, 
+      loginFlag, birthDate, idType, 
+      idNumber, identityImg, nationality, 
+      nation, politicalStatus, graduateInstitutions, 
+      professional, education, qualification, 
+      bloodType, nativePlace, contactAddress, 
+      postalNumber, fixedTelephone, otherContact, 
+      workTitle, workPost, workName, 
+      workIndustry, workNature, is_del, 
+      did, modify_time)
+    values (#{id,jdbcType=VARCHAR}, #{loginname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{usertype,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{oldloginip,jdbcType=VARCHAR}, #{oldlogindate,jdbcType=TIMESTAMP}, 
+      #{loginflag,jdbcType=VARCHAR}, #{birthdate,jdbcType=TIMESTAMP}, #{idtype,jdbcType=VARCHAR}, 
+      #{idnumber,jdbcType=VARCHAR}, #{identityimg,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR}, 
+      #{nation,jdbcType=VARCHAR}, #{politicalstatus,jdbcType=VARCHAR}, #{graduateinstitutions,jdbcType=VARCHAR}, 
+      #{professional,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{qualification,jdbcType=VARCHAR}, 
+      #{bloodtype,jdbcType=VARCHAR}, #{nativeplace,jdbcType=VARCHAR}, #{contactaddress,jdbcType=VARCHAR}, 
+      #{postalnumber,jdbcType=INTEGER}, #{fixedtelephone,jdbcType=VARCHAR}, #{othercontact,jdbcType=VARCHAR}, 
+      #{worktitle,jdbcType=VARCHAR}, #{workpost,jdbcType=VARCHAR}, #{workname,jdbcType=VARCHAR}, 
+      #{workindustry,jdbcType=VARCHAR}, #{worknature,jdbcType=VARCHAR}, #{isDel,jdbcType=INTEGER}, 
+      #{did,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.ucenter.entity.User">
+    <!--<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select LAST_INSERT_ID()
+    </selectKey>-->
+    <selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="loginname != null">
+        loginName,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="phonenum != null">
+        phoneNum,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="usertype != null">
+        userType,
+      </if>
+      <if test="createdate != null">
+        createDate,
+      </if>
+      <if test="oldloginip != null">
+        oldLoginIp,
+      </if>
+      <if test="oldlogindate != null">
+        oldLoginDate,
+      </if>
+      <if test="loginflag != null">
+        loginFlag,
+      </if>
+      <if test="birthdate != null">
+        birthDate,
+      </if>
+      <if test="idtype != null">
+        idType,
+      </if>
+      <if test="idnumber != null">
+        idNumber,
+      </if>
+      <if test="identityimg != null">
+        identityImg,
+      </if>
+      <if test="nationality != null">
+        nationality,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="politicalstatus != null">
+        politicalStatus,
+      </if>
+      <if test="graduateinstitutions != null">
+        graduateInstitutions,
+      </if>
+      <if test="professional != null">
+        professional,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="qualification != null">
+        qualification,
+      </if>
+      <if test="bloodtype != null">
+        bloodType,
+      </if>
+      <if test="nativeplace != null">
+        nativePlace,
+      </if>
+      <if test="contactaddress != null">
+        contactAddress,
+      </if>
+      <if test="postalnumber != null">
+        postalNumber,
+      </if>
+      <if test="fixedtelephone != null">
+        fixedTelephone,
+      </if>
+      <if test="othercontact != null">
+        otherContact,
+      </if>
+      <if test="worktitle != null">
+        workTitle,
+      </if>
+      <if test="workpost != null">
+        workPost,
+      </if>
+      <if test="workname != null">
+        workName,
+      </if>
+      <if test="workindustry != null">
+        workIndustry,
+      </if>
+      <if test="worknature != null">
+        workNature,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="did != null">
+        did,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null">
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oldloginip != null">
+        #{oldloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="oldlogindate != null">
+        #{oldlogindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginflag != null">
+        #{loginflag,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        #{birthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idtype != null">
+        #{idtype,jdbcType=VARCHAR},
+      </if>
+      <if test="idnumber != null">
+        #{idnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="identityimg != null">
+        #{identityimg,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null">
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalstatus != null">
+        #{politicalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateinstitutions != null">
+        #{graduateinstitutions,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null">
+        #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="qualification != null">
+        #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodtype != null">
+        #{bloodtype,jdbcType=VARCHAR},
+      </if>
+      <if test="nativeplace != null">
+        #{nativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="contactaddress != null">
+        #{contactaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postalnumber != null">
+        #{postalnumber,jdbcType=INTEGER},
+      </if>
+      <if test="fixedtelephone != null">
+        #{fixedtelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="othercontact != null">
+        #{othercontact,jdbcType=VARCHAR},
+      </if>
+      <if test="worktitle != null">
+        #{worktitle,jdbcType=VARCHAR},
+      </if>
+      <if test="workpost != null">
+        #{workpost,jdbcType=VARCHAR},
+      </if>
+      <if test="workname != null">
+        #{workname,jdbcType=VARCHAR},
+      </if>
+      <if test="workindustry != null">
+        #{workindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="worknature != null">
+        #{worknature,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        #{did,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 更新    (恢复手机用户处有更改) -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.ucenter.entity.User">
+    update sys_user
+    <set>
+      <if test="loginname != null">
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null">
+        phoneNum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        userType = #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oldloginip != null">
+        oldLoginIp = #{oldloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="oldlogindate != null">
+        oldLoginDate = #{oldlogindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginflag != null">
+        loginFlag = #{loginflag,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        birthDate = #{birthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idtype != null">
+        idType = #{idtype,jdbcType=VARCHAR},
+      </if>
+      <if test="idnumber != null">
+        idNumber = #{idnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="identityimg != null">
+        identityImg = #{identityimg,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null">
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalstatus != null">
+        politicalStatus = #{politicalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateinstitutions != null">
+        graduateInstitutions = #{graduateinstitutions,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null">
+        professional = #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="qualification != null">
+        qualification = #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodtype != null">
+        bloodType = #{bloodtype,jdbcType=VARCHAR},
+      </if>
+      <if test="nativeplace != null">
+        nativePlace = #{nativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="contactaddress != null">
+        contactAddress = #{contactaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postalnumber != null">
+        postalNumber = #{postalnumber,jdbcType=INTEGER},
+      </if>
+      <if test="fixedtelephone != null">
+        fixedTelephone = #{fixedtelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="othercontact != null">
+        otherContact = #{othercontact,jdbcType=VARCHAR},
+      </if>
+      <if test="worktitle != null">
+        workTitle = #{worktitle,jdbcType=VARCHAR},
+      </if>
+      <if test="workpost != null">
+        workPost = #{workpost,jdbcType=VARCHAR},
+      </if>
+      <if test="workname != null">
+        workName = #{workname,jdbcType=VARCHAR},
+      </if>
+      <if test="workindustry != null">
+        workIndustry = #{workindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="worknature != null">
+        workNature = #{worknature,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <!--<if test="did != null">
+        did = #{did,jdbcType=VARCHAR},
+      </if>-->
+      <choose>
+        <when test="did == 'recoveryPhoneUser'">
+          did = NULL ,
+        </when>
+        <when test="did != null">
+          did = #{did,jdbcType=VARCHAR},
+        </when>
+      </choose>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.cen.ucenter.entity.User">
+    update sys_user
+    set loginName = #{loginname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      phoneNum = #{phonenum,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      userType = #{usertype,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      oldLoginIp = #{oldloginip,jdbcType=VARCHAR},
+      oldLoginDate = #{oldlogindate,jdbcType=TIMESTAMP},
+      loginFlag = #{loginflag,jdbcType=VARCHAR},
+      birthDate = #{birthdate,jdbcType=TIMESTAMP},
+      idType = #{idtype,jdbcType=VARCHAR},
+      idNumber = #{idnumber,jdbcType=VARCHAR},
+      identityImg = #{identityimg,jdbcType=VARCHAR},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      politicalStatus = #{politicalstatus,jdbcType=VARCHAR},
+      graduateInstitutions = #{graduateinstitutions,jdbcType=VARCHAR},
+      professional = #{professional,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      qualification = #{qualification,jdbcType=VARCHAR},
+      bloodType = #{bloodtype,jdbcType=VARCHAR},
+      nativePlace = #{nativeplace,jdbcType=VARCHAR},
+      contactAddress = #{contactaddress,jdbcType=VARCHAR},
+      postalNumber = #{postalnumber,jdbcType=INTEGER},
+      fixedTelephone = #{fixedtelephone,jdbcType=VARCHAR},
+      otherContact = #{othercontact,jdbcType=VARCHAR},
+      workTitle = #{worktitle,jdbcType=VARCHAR},
+      workPost = #{workpost,jdbcType=VARCHAR},
+      workName = #{workname,jdbcType=VARCHAR},
+      workIndustry = #{workindustry,jdbcType=VARCHAR},
+      workNature = #{worknature,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER},
+      did = #{did,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

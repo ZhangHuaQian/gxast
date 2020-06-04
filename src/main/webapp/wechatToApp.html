@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>小博士报</title>
+</head>
+<script type="text/javascript">
+	function GetQueryString(name)
+	{
+		 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		 var r = window.location.search.substr(1).match(reg);
+		 if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	window.location.href = 'http://www.gxkpcb.com/app/index.html#/xbsb_address?code='+GetQueryString("code");
+	//window.location.href = 'http://xbsb.gxkpcb.com/#/xbsb_address?code='+GetQueryString("code");
+</script>
+<body>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.sys.ItemAnswer.dao.ItemAnswerMapper">
+  <resultMap id="BaseResultMap" type="com.cen.sys.ItemAnswer.entity.ItemAnswer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="u_name" jdbcType="VARCHAR" property="uName" />
+    <result column="item_bank_id" jdbcType="INTEGER" property="itemBankId" />
+    <result column="u_option" jdbcType="VARCHAR" property="uOption" />
+    <result column="r_option" jdbcType="VARCHAR" property="rOption" />
+    <result column="result" jdbcType="INTEGER" property="result" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, u_id, u_name, item_bank_id, u_option, r_option, result, start_time, end_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_item_answer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_item_answer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cen.sys.ItemAnswer.entity.ItemAnswer">
+    insert into s_item_answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="uName != null">
+        u_name,
+      </if>
+      <if test="itemBankId != null">
+        item_bank_id,
+      </if>
+      <if test="uOption != null">
+        u_option,
+      </if>
+      <if test="rOption != null">
+        r_option,
+      </if>
+      <if test="result != null">
+        result,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uName != null">
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemBankId != null">
+        #{itemBankId,jdbcType=INTEGER},
+      </if>
+      <if test="uOption != null">
+        #{uOption,jdbcType=VARCHAR},
+      </if>
+      <if test="rOption != null">
+        #{rOption,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.sys.ItemAnswer.entity.ItemAnswer">
+    update s_item_answer
+    <set>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uName != null">
+        u_name = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemBankId != null">
+        item_bank_id = #{itemBankId,jdbcType=INTEGER},
+      </if>
+      <if test="uOption != null">
+        u_option = #{uOption,jdbcType=VARCHAR},
+      </if>
+      <if test="rOption != null">
+        r_option = #{rOption,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        result = #{result,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="sql_where">
+    <where>
+      <if test="uId != null">
+         and u_id = #{uId,jdbcType=INTEGER}
+      </if>
+      <if test="uName != null">
+         and u_name = #{uName,jdbcType=VARCHAR}
+      </if>
+      <if test="itemBankId != null">
+         and item_bank_id = #{itemBankId,jdbcType=INTEGER}
+      </if>
+      <if test="uOption != null">
+         and u_option = #{uOption,jdbcType=VARCHAR}
+      </if>
+      <if test="rOption != null">
+         and r_option = #{rOption,jdbcType=VARCHAR}
+      </if>
+      <if test="result != null">
+         and result = #{result,jdbcType=INTEGER}
+      </if>
+      <if test="startTime != null">
+         and start_time = #{startTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endTime != null">
+         and end_time = #{endTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from s_item_answer
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteLogicByIds">
+    update s_item_answer set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+
+  <select id="selectByUid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from s_item_answer where u_id = #{uId}
+  </select>
+
+  <insert id="insertList" parameterType="com.cen.sys.ItemAnswer.entity.ItemAnswer">
+    insert into
+    s_item_answer(u_id, u_name, item_bank_id, u_option, r_option, result, end_time)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.uId},
+      #{item.uName},
+      #{item.itemBankId},
+      #{item.uOption},
+      #{item.rOption},
+      #{item.result},
+      #{item.endTime})
+    </foreach>
+  </insert>
+</mapper>

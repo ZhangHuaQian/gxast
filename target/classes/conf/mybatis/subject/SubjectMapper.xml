@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cen.subject.dao.SubjectDao" >
+  <resultMap id="BaseResultMap" type="com.cen.subject.entity.Subject" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="zname" property="zname" jdbcType="VARCHAR" />
+    <result column="ztype" property="ztype" jdbcType="VARCHAR" />
+    <result column="zsign" property="zsign" jdbcType="VARCHAR" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="orignfrom" property="orignfrom" jdbcType="VARCHAR" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="originUrl" property="originUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select * from t_subject  where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 后台查询列表所有数据 -->
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from t_subject
+    <where>
+      <if test="title !=null">
+        title LIKE concat(concat("%",#{title}),"%")
+      </if>
+      <if test="start != null"> and date(create_time) >= #{start} </if>
+      <if test="end !=null">and #{end} >= date(create_time)</if>
+      <if test="ztype != null and ztype != ''"> and ztype = #{ztype,jdbcType=VARCHAR} </if>
+    </where>
+  order by create_time desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+		limit #{pageNum}, #{pageSize}
+	</if>
+  </select>
+  <!-- 分页查询用户行数 -->
+  <select id="selectListCount" resultType="java.lang.Integer">
+    select
+    count(id) as count  from t_subject
+    <where>
+      <if test="title !=null">
+        title LIKE concat(concat("%",#{title}),"%")
+      </if>
+      <if test="start != null"> and date(create_time) >= #{start} </if>
+      <if test="end !=null">and #{end} >= date(create_time)</if>
+      <if test="ztype != null and ztype != ''"> and ztype = #{ztype,jdbcType=VARCHAR} </if>
+      </where>
+
+    </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_subject
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cen.subject.entity.Subject" >
+    insert into t_subject
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zname != null" >
+        zname,
+      </if>
+      <if test="ztype != null" >
+        ztype,
+      </if>
+      <if test="zsign != null" >
+        zsign,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="orignfrom != null">
+        orignfrom,
+      </if>
+      <if test="editor != null">
+        editor,
+      </if>
+      <if test="originUrl != null">
+        originUrl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="zname != null" >
+        #{zname,jdbcType=VARCHAR},
+      </if>
+      <if test="ztype != null" >
+        #{ztype,jdbcType=VARCHAR},
+      </if>
+      <if test="zsign != null" >
+        #{zsign,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orignfrom != null">
+        #{orignfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null">
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="originUrl != null">
+        #{originUrl,jdbcType=VARCHAR},
+      </if>
+     </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.subject.entity.Subject" >
+    update t_subject
+    <set >
+      <if test="zname != null" >
+        zname = #{zname,jdbcType=VARCHAR},
+      </if>
+      <if test="ztype != null" >
+        ztype = #{ztype,jdbcType=VARCHAR},
+      </if>
+      <if test="zsign != null" >
+        zsign = #{zsign,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orignfrom != null">
+        orignfrom = #{orignfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null">
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="originUrl != null">
+        originUrl = #{originUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

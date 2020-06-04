@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.GzbdContestFirewall.dao.GzbdContestFirewallMapper">
+  <resultMap id="BaseResultMap" type="com.cen.GzbdContestFirewall.entity.GzbdContestFirewall">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <select id="selectByOpenid" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT * FROM gzbd_contest_firewall WHERE openid = #{openid} AND TO_DAYS(create_time) = TO_DAYS(NOW()) ORDER BY create_time DESC LIMIT 2
+  </select>
+
+  <insert id="insertSelective" parameterType="com.cen.GzbdContestFirewall.entity.GzbdContestFirewall">
+    <selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
+    insert into gzbd_contest_firewall
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <sql id="sql_where">
+    <where>
+      <if test="id != null">
+         and id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="openid != null">
+         and openid = #{openid,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+         and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from gzbd_contest_firewall
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteLogicByIds">
+    update gzbd_contest_firewall set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+</mapper>

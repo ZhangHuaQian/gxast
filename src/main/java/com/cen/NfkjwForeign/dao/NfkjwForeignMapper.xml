@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.NfkjwForeign.dao.NfkjwForeignMapper">
+  <resultMap id="BaseResultMap" type="com.cen.NfkjwForeign.entity.NfkjwForeign">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="catid" jdbcType="INTEGER" property="catid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="editor" jdbcType="VARCHAR" property="editor" />
+    <result column="page_view" jdbcType="INTEGER" property="pageView" />
+    <result column="praise_view" jdbcType="INTEGER" property="praiseView" />
+    <result column="orignfrom" jdbcType="VARCHAR" property="orignfrom" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cen.NfkjwForeign.entity.NfkjwForeign">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, catid, title, description, author, editor, page_view, praise_view, orignfrom, 
+    photo, create_time, type
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from nfkjw_foreign
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from nfkjw_foreign
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.cen.NfkjwForeign.entity.NfkjwForeign">
+    insert into nfkjw_foreign
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="catid != null">
+        catid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="editor != null">
+        editor,
+      </if>
+      <if test="pageView != null">
+        page_view,
+      </if>
+      <if test="praiseView != null">
+        praise_view,
+      </if>
+      <if test="orignfrom != null">
+        orignfrom,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="catid != null">
+        #{catid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null">
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="pageView != null">
+        #{pageView,jdbcType=INTEGER},
+      </if>
+      <if test="praiseView != null">
+        #{praiseView,jdbcType=INTEGER},
+      </if>
+      <if test="orignfrom != null">
+        #{orignfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.NfkjwForeign.entity.NfkjwForeign">
+    update nfkjw_foreign
+    <set>
+      <if test="catid != null">
+        catid = #{catid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null">
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="pageView != null">
+        page_view = #{pageView,jdbcType=INTEGER},
+      </if>
+      <if test="praiseView != null">
+        praise_view = #{praiseView,jdbcType=INTEGER},
+      </if>
+      <if test="orignfrom != null">
+        orignfrom = #{orignfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <sql id="sql_where">
+    <where>
+      <if test="catid != null">
+         and catid = #{catid,jdbcType=INTEGER}
+      </if>
+      <if test="title != null">
+         and title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="description != null">
+         and description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="author != null">
+         and author = #{author,jdbcType=VARCHAR}
+      </if>
+      <if test="editor != null">
+         and editor = #{editor,jdbcType=VARCHAR}
+      </if>
+      <if test="pageView != null">
+         and page_view = #{pageView,jdbcType=INTEGER}
+      </if>
+      <if test="praiseView != null">
+         and praise_view = #{praiseView,jdbcType=INTEGER}
+      </if>
+      <if test="orignfrom != null">
+         and orignfrom = #{orignfrom,jdbcType=VARCHAR}
+      </if>
+      <if test="photo != null">
+         and photo = #{photo,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+         and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="type != null">
+         and type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="content != null">
+         and content = #{content,jdbcType=LONGVARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from nfkjw_foreign
+    <include refid="sql_where" />
+  </select>
+  <update id="deleteLogicByIds">
+    update nfkjw_foreign set ids = #{ids,jdbcType=VARCHAR} where id in  <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach> 
+  </update>
+
+  <!--查询最后一条插入的资讯id-->
+  <select id="selectLastInsertId" resultMap="BaseResultMap">
+    select id from `nfkjw_foreign` order by id desc limit 1
+  </select>
+</mapper>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cen.news_comment.dao.NewsCommentDao" >
+  <resultMap id="BaseResultMap" type="com.cen.news_comment.entity.NewsComment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="topic_id" property="topicId" jdbcType="INTEGER" />
+    <result column="topic_type" property="topicType" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="from_uid" property="fromUid" jdbcType="VARCHAR" />
+    <result column="commentstate" property="commentstate" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, topic_id, topic_type, content, from_uid, commentstate,time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from news_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectCommentUserArticle" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select * from news_comment where topic_id = #{newsid,jdbcType=INTEGER} ORDER BY commentstate ASC,time DESC
+         LIMIT #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="comment" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select * from news_comment where topic_id=#{newsid,jdbcType=INTEGER}
+  </select>
+  <select id="allcomment" resultMap="BaseResultMap">
+  	select * from news_comment where commentstate=0
+  </select>
+  <select id="commentcount" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select * from news_comment where topic_id = #{newsid,jdbcType=INTEGER}
+  </select>
+  <select id="article_comment"  resultMap="BaseResultMap">
+  	select * from news_comment
+  	where topic_id = #{newsid}
+  	and topic_type = #{topic_type}
+  	and commentstate='1'
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from news_comment
+     <where>
+       <if test="start != null"> and date(time) >= #{start} </if>
+    <if test="end !=null">and #{end} >= date(time)</if>
+       <if test="commentstate != null and commentstate!='' ">
+         and commentstate = #{commentstate}
+       </if>
+
+     </where>
+     order by time desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+  <select id="selectListCount" resultType="java.lang.Integer">
+    select count(id) as count
+    from news_comment
+    <where>
+    <if test="start != null"> and date(news_comment.time) >= #{start} </if>
+    <if test="end !=null">and #{end} >= date(news_comment.time)</if>
+      <if test="commentstate != null and commentstate!='' ">
+        and commentstate = #{commentstate}
+      </if>
+    </where>
+  </select>
+
+  <select id="article_comment_two"  resultMap="BaseResultMap">
+    select * from news_comment
+  	where topic_id = #{newsid}
+  	and from_uid = #{uid}
+  	and topic_type = #{topic_type}
+  	and commentstate='0'
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+
+  <select id="selectCommentCount"  resultType="java.lang.Integer">
+    select count(id)as count  from news_comment where   commentstate='0'
+</select>
+
+
+  <select id="selectallcomment" resultMap="BaseResultMap">
+    select 
+    *
+    from news_comment
+    where topic_id=#{newsid,jdbcType=INTEGER} and commentstate=1  ORDER BY time DESC LIMIT #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from news_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteAllMcomment" parameterType="java.lang.Integer">
+    delete from news_comment
+    where topic_id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.cen.news_comment.entity.NewsComment" >
+    insert into news_comment (id, topic_id, topic_type,
+      content, from_uid, commentstate, time
+      )
+    values (#{id,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER}, #{topicType,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{fromUid,jdbcType=VARCHAR}, #{commentstate,jdbcType=VARCHAR},#{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.news_comment.entity.NewsComment" >
+    insert into news_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="topicId != null" >
+        topic_id,
+      </if>
+      <if test="topicType != null" >
+        topic_type,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="fromUid != null" >
+        from_uid,
+      </if>
+      <if test="commentstate != null" >
+        commentstate,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="topicId != null" >
+        #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="topicType != null" >
+        #{topicType,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUid != null" >
+        #{fromUid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentstate != null" >
+        #{commentstate,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.news_comment.entity.NewsComment" >
+    update news_comment
+    <set >
+      <if test="topicId != null" >
+        topic_id = #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="topicType != null" >
+        topic_type = #{topicType,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUid != null" >
+        from_uid = #{fromUid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentstate != null" >
+        commentstate = #{commentstate,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.news_comment.entity.NewsComment" >
+    update news_comment
+    set
+      commentstate = #{commentstate,jdbcType=VARCHAR}
+
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

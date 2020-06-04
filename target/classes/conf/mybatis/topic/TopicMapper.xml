@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.bbs.topic.dao.TopicDao">
+  <resultMap id="BaseResultMap" type="com.cen.bbs.topic.entity.Topic">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="nid" jdbcType="INTEGER" property="nid" />
+    <result column="ssession" jdbcType="VARCHAR" property="ssession" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="is_top" jdbcType="INTEGER" property="isTop" />
+    <result column="is_essence" jdbcType="INTEGER" property="isEssence" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="like_num" jdbcType="INTEGER" property="likeNum" />
+    <result column="comment" jdbcType="INTEGER" property="comment" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="click_num" jdbcType="INTEGER" property="clickNum" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="report" jdbcType="INTEGER" property="report" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    tid, uid, nid, ssession, title, is_top, is_essence, weight, create_time, update_time,
+    status, like_num, comment, is_del, click_num ,content,report
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_topic
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+
+  <!--查询当前用户帖子-->
+  <select id="selectmytopic" resultMap="BaseResultMap">
+    select
+    *
+    from t_topic
+    where is_del=0
+    <if test="userid != null ">
+      AND uid = #{userid,jdbcType=VARCHAR}
+    </if>
+    order by create_time desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+
+  <!--查询当前用户帖子-->
+  <select id="selectAlltopicForCheck" resultMap="BaseResultMap">
+    select
+    *
+    from t_topic
+    where is_del=0
+
+    <if test="sname != null and sname !=''">
+      AND title LIKE '%${sname}%'
+    </if>
+    <if test="sprofile != null and sprofile !=''">
+      AND content LIKE '%${sprofile}%'
+    </if>
+    <if test="userid != null ">
+      AND uid = #{userid,jdbcType=VARCHAR}
+    </if>
+    order by create_time desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+  <!--查询已置顶的数量帖子-->
+  <select id="countoflimit" resultType="java.lang.Integer">
+    select
+    COUNT(*)
+    from t_topic
+    where is_del=0
+    and is_top=1
+
+  </select>
+
+  <!--查询当前用户评论数量最高的10条帖子-->
+  <select id="selectBycommentnum" resultMap="BaseResultMap">
+    select
+    *
+    from t_topic
+    where is_del=0 and status=0
+    order by comment desc
+      limit 0, 10
+  </select>
+
+  <!--查询被置顶的帖子帖子-->
+  <select id="selectIsTop" resultType="java.util.HashMap">
+    SELECT b.id ,b.name,b.photo,c.sname ,c.type,a.* FROM  t_topic as a,sys_user as b,t_session as c
+    where a.is_del=0
+    and a.uid=b.id
+    and c.sid=a.ssession
+    and a.is_top=1
+    and a.status=0
+    <if test="uid != null and uid!=''">
+      and a.uid=#{uid}
+    </if>
+    order by update_time desc
+    limit 0, 5
+  </select>
+
+    <!--查询被置顶的帖子帖子-->
+    <select id="selectIsTop2" resultType="java.util.HashMap">
+        SELECT b.id ,b.name,b.photo,c.sname ,c.type,a.* FROM  t_topic as a,sys_user as b,t_session as c
+        where a.is_del=0
+        and a.uid=b.id
+        and c.sid=a.ssession
+        and a.is_top=1
+        and a.status=0
+        <if test="uid != null and uid!=''">
+            and a.uid=#{uid}
+        </if>
+        order by update_time desc
+        limit 0, 5
+    </select>
+
+  <!--查询当前用户帖子-->
+  <select id="selectListCount" resultType="java.lang.Integer">
+    select
+    COUNT(*)
+    from t_topic
+    where is_del=0
+    <if test="sname != null and sname !=''">
+      AND title LIKE '%${sname}%'
+    </if>
+    <if test="sprofile != null and sprofile !=''">
+      AND content LIKE '%${sprofile}%'
+    </if>
+    <if test="userid != null">
+    AND uid = #{userid,jdbcType=VARCHAR}
+    </if>
+    order by status desc
+    <!-- 分页 -->
+    <!--<if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>-->
+  </select>
+
+  <!--分页查询当所有帖子-->
+  <select id="selectAlltopic" resultType="java.util.HashMap">
+    SELECT b.id ,b.name,b.photo,c.sname ,c.type,a.* FROM  t_topic as a,sys_user as b,t_session as c
+    where a.is_del=0
+    and a.uid=b.id
+    and c.sid=a.ssession
+    and a.status=0
+    <if test="ssession != null and ssession!=''">
+      and a.ssession=#{ssession,jdbcType=VARCHAR}
+    </if>
+    <if test="title !=null">
+      and a.title LIKE concat(concat("%",#{title}),"%")
+    </if>
+    <if test="uid != null and uid!=''">
+      and a.uid=#{uid}
+    </if>
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+
+    <!--分页查询当所有帖子-->
+    <select id="selectAlltopic2" resultType="java.util.HashMap">
+        SELECT b.id ,b.name,b.photo,c.sname ,c.type,a.* FROM  t_topic as a,sys_user as b,t_session as c
+        where a.is_del=0
+        and a.uid=b.id
+        and c.sid=a.ssession
+        and a.status=0
+        <if test="ssession != null and ssession!=''">
+            and a.ssession=#{ssession,jdbcType=VARCHAR}
+        </if>
+        <if test="title !=null">
+            and a.title LIKE concat(concat("%",#{title}),"%")
+        </if>
+        <if test="uid != null and uid!=''">
+            and a.uid=#{uid}
+        </if>
+        <if test="pageNum != null and pageSize != null">
+            limit #{pageNum}, #{pageSize}
+        </if>
+    </select>
+
+  <select id="selectAlltopicCount" resultType="java.lang.Integer">
+    SELECT count(*) FROM  t_topic as a,sys_user as b,t_session as c
+    where a.is_del=0
+    and a.uid=b.id
+    and c.sid=a.ssession
+    and a.status=0
+    <if test="ssession != null and ssession!=''">
+      and a.ssession=#{ssession,jdbcType=VARCHAR}
+    </if>
+    <if test="title !=null">
+      and a.title LIKE concat(concat("%",#{title}),"%")
+    </if>
+    <if test="uid != null and uid!=''">
+      and a.uid=#{uid}
+    </if>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_topic
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.cen.bbs.topic.entity.Topic">
+    insert into t_topic (tid, uid, nid,
+    ssession, title, is_top,
+    is_essence, weight, create_time,
+    update_time, status, like_num,
+    comment, is_del, click_num,content,report)
+    values (#{tid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{nid,jdbcType=INTEGER},
+    #{ssession,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{isTop,jdbcType=INTEGER},
+    #{isEssence,jdbcType=INTEGER}, #{weight,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP},
+    #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{likeNum,jdbcType=INTEGER},
+    #{comment,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER}, #{clickNum,jdbcType=INTEGER},
+    #{content,jdbcType=VARCHAR},#{report,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.bbs.topic.entity.Topic">
+    insert into t_topic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="nid != null">
+        nid,
+      </if>
+      <if test="ssession != null">
+        ssession,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="isTop != null">
+        is_top,
+      </if>
+      <if test="isEssence != null">
+        is_essence,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="likeNum != null">
+        like_num,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="clickNum != null">
+        click_num,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="report != null">
+        report,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="nid != null">
+        #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="ssession != null">
+        #{ssession,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="isTop != null">
+        #{isTop,jdbcType=INTEGER},
+      </if>
+      <if test="isEssence != null">
+        #{isEssence,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null">
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="report != null">
+        #{report,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.bbs.topic.entity.Topic">
+    update t_topic
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="nid != null">
+        nid = #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="ssession != null">
+        ssession = #{ssession,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="isTop != null">
+        is_top = #{isTop,jdbcType=INTEGER},
+      </if>
+      <if test="isEssence != null">
+        is_essence = #{isEssence,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null">
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="report != null">
+        report = #{report,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cen.bbs.topic.entity.Topic">
+    update t_topic
+    set uid = #{uid,jdbcType=VARCHAR},
+    nid = #{nid,jdbcType=INTEGER},
+    ssession = #{ssession,jdbcType=VARCHAR},
+    title = #{title,jdbcType=VARCHAR},
+    is_top = #{isTop,jdbcType=INTEGER},
+    is_essence = #{isEssence,jdbcType=INTEGER},
+    weight = #{weight,jdbcType=DOUBLE},
+    create_time = #{createTime,jdbcType=TIMESTAMP},
+    update_time = #{updateTime,jdbcType=TIMESTAMP},
+    status = #{status,jdbcType=INTEGER},
+    like_num = #{likeNum,jdbcType=INTEGER},
+    comment = #{comment,jdbcType=INTEGER},
+    is_del = #{isDel,jdbcType=INTEGER},
+    click_num = #{clickNum,jdbcType=INTEGER},
+    content = #{content,jdbcType=VARCHAR},
+    report = #{report,jdbcType=INTEGER}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.bbs.topic.entity.Topic">
+    update t_topic
+    set uid = #{uid,jdbcType=VARCHAR},
+      nid = #{nid,jdbcType=INTEGER},
+      ssession = #{ssession,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      is_top = #{isTop,jdbcType=INTEGER},
+      is_essence = #{isEssence,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=INTEGER},
+      is_del = #{isDel,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      report = #{report,jdbcType=INTEGER}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

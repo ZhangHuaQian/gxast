@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.bbs.comment.dao.CommentDao">
+  <resultMap id="BaseResultMap" type="com.cen.bbs.comment.entity.Comment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="to_uid" jdbcType="INTEGER" property="toUid" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="device" jdbcType="VARCHAR" property="device" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="like_num" jdbcType="INTEGER" property="likeNum" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="t_title" jdbcType="VARCHAR" property="tTitle" />
+    <result column="verify" jdbcType="INTEGER" property="verify" />
+
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cen.bbs.comment.entity.Comment">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, to_uid, tid, device, create_time, like_num, state, pid,content,t_title,verify
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    from t_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByid"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_comment
+    where tid = #{tid}
+     and id = #{id}
+  </select>
+
+  <select id="selectByTid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_comment
+    where tid = #{tid,jdbcType=INTEGER}
+    <if test="verify != null">
+      and verify = #{verify}
+    </if>
+  </select>
+  <!--根据文章id查询文章的所有评论,和评论人消息-->
+  <select id="selectAllcomment"  resultType="java.util.HashMap">
+   select u.id,u.name,u.photo, c.* from t_comment as c,sys_user as u
+   where c.tid=#{tid,jdbcType=INTEGER}
+   and c.uid=u.id
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+  <!--查询评论活跃的用户-->
+  <select id="rubackUser"  resultType="java.util.HashMap">
+   select u.id ,u.loginName,u.photo,u.name,u.phoneNum,  count(c.uid) as Repetitions ,uid
+from  gxast.t_comment as c ,
+ gxast.sys_user as u
+where c.uid=u.id
+group by c.uid
+having count(c.uid)>0
+order by Repetitions desc
+limit 0,10
+  </select>
+  <!--根据文章id查询文章的所有评论,和评论人消息-->
+  <select id="selectAllcommentCount"  resultType="java.lang.Integer">
+   select COUNT(*) from t_comment as c,sys_user as u
+   where c.tid=#{tid,jdbcType=INTEGER}
+   and c.uid=u.id
+  </select>
+
+
+
+  <!--根据文章id查询文章的所有评论-->
+  <select id="selectBytid"  resultMap="BaseResultMap">
+   select * from t_comment as c
+   where tid=#{tid,jdbcType=INTEGER}
+    and c.state=0
+    <if test="verify != null">
+      and verify = #{verify}
+    </if>
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+  <!--根据文章id查询文章的所有评论-->
+  <select id="selectBytidCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+   select COUNT(*) from t_comment as c
+   where c.tid=#{tid,jdbcType=INTEGER}
+   and c.state=0
+   and verify = 1
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="deleteAllMcomment" parameterType="java.lang.Integer">
+    delete from t_comment
+    where tid = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cen.bbs.comment.entity.Comment">
+    insert into t_comment (id, uid, to_uid,
+    tid, device, create_time,
+    like_num, state, pid,
+    content)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{toUid,jdbcType=INTEGER},
+    #{tid,jdbcType=INTEGER}, #{device,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+    #{likeNum,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER},
+    #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.bbs.comment.entity.Comment">
+    insert into t_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="toUid != null">
+        to_uid,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="device != null">
+        device,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="likeNum != null">
+        like_num,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="tTitle != null">
+        t_title,
+      </if>
+      <if test="verify != null">
+        verify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="toUid != null">
+        #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="device != null">
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="likeNum != null">
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tTitle != null">
+        #{tTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="verify != null">
+        #{verify,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.bbs.comment.entity.Comment">
+    update t_comment
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="toUid != null">
+        to_uid = #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="device != null">
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="likeNum != null">
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tTitle != null">
+        t_title = #{tTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="verify != null">
+        verify = #{verify,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cen.bbs.comment.entity.Comment">
+    update t_comment
+    set uid = #{uid,jdbcType=VARCHAR},
+    to_uid = #{toUid,jdbcType=INTEGER},
+    tid = #{tid,jdbcType=INTEGER},
+    device = #{device,jdbcType=VARCHAR},
+    create_time = #{createTime,jdbcType=TIMESTAMP},
+    like_num = #{likeNum,jdbcType=INTEGER},
+    state = #{state,jdbcType=INTEGER},
+    pid = #{pid,jdbcType=INTEGER},
+    content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.bbs.comment.entity.Comment">
+    update t_comment
+    set uid = #{uid,jdbcType=VARCHAR},
+      to_uid = #{toUid,jdbcType=INTEGER},
+      tid = #{tid,jdbcType=INTEGER},
+      device = #{device,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER}
+      verify = #{verify,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT id,uid,tid,content,pid,verify,create_time FROM `t_comment`
+    <where>
+      <if test="uId != null">
+        and uid = #{uId}
+      </if>
+      <if test="verify != null">
+        and verify = #{verify}
+      </if>
+      <if test="startTime != null">
+        and create_time >= #{startTime}
+      </if>
+      <if test="endTime != null">
+        and create_time &lt;= #{endTime}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime}
+      </if>
+    </where>
+    UNION
+    SELECT id,uid,tid,content,pid,verify,create_time FROM `t_toconmment`
+    <where>
+      <if test="uId != null">
+        and uid = #{uId}
+      </if>
+      <if test="verify != null">
+        verify = #{verify}
+      </if>
+      <if test="startTime != null">
+        and create_time >= #{startTime}
+      </if>
+      <if test="endTime != null">
+        and create_time &lt;= #{endTime}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime}
+      </if>
+    </where>
+    ORDER BY create_time DESC
+  </select>
+</mapper>

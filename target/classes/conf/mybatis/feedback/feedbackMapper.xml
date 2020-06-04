@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cen.feedback.dao.FeedbackDao">
+  <resultMap id="BaseResultMap" type="com.cen.feedback.entity.Feedback">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="system" jdbcType="INTEGER" property="system" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="mac" jdbcType="VARCHAR" property="mac" />
+    <result column="read_if" jdbcType="INTEGER" property="readIf" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="contain" jdbcType="VARCHAR" property="contain" />
+  </resultMap>
+ <!-- <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cen.feedback.entity.Feedback">
+    <result column="contain" jdbcType="LONGVARCHAR" property="contain" />
+  </resultMap>-->
+  <sql id="Base_Column_List">
+    id, user, phone, system,contain,ip, mac, read_if, version, date, is_del
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_feedback
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 查询反馈信息列表 -->
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from t_feedback
+    where is_del = 0
+    <if test="container !=null and container !=''">
+      and contain LIKE concat(concat("%",#{container}),"%")
+    </if>
+    order by id desc
+    <!-- 分页 -->
+    <if test="pageNum != null and pageSize != null">
+      limit #{pageNum}, #{pageSize}
+    </if>
+  </select>
+
+  <!-- 查询反馈信息列表数 -->
+  <select id="selectListCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select
+    count(id) as count
+    from t_feedback
+    where is_del = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_feedback
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cen.feedback.entity.Feedback">
+    insert into t_feedback (id, user, phone,
+    system, ip, mac, read_if,
+    version, date, is_del,
+    contain)
+    values (#{id,jdbcType=INTEGER}, #{user,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+    #{system,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{mac,jdbcType=VARCHAR}, #{readIf,jdbcType=INTEGER},
+    #{version,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{isDel,jdbcType=INTEGER},
+    #{contain,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cen.feedback.entity.Feedback">
+    insert into t_feedback
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="system != null">
+        system,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="mac != null">
+        mac,
+      </if>
+      <if test="readIf != null">
+        read_if,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="contain != null">
+        contain,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="system != null">
+        #{system,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null">
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="readIf != null">
+        #{readIf,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="contain != null">
+        #{contain,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cen.feedback.entity.Feedback">
+    update t_feedback
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="system != null">
+        system = #{system,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null">
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="readIf != null">
+        read_if = #{readIf,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="contain != null">
+        contain = #{contain,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cen.feedback.entity.Feedback">
+    update t_feedback
+    set user = #{user,jdbcType=VARCHAR},
+    phone = #{phone,jdbcType=VARCHAR},
+    system = #{system,jdbcType=INTEGER},
+    ip = #{ip,jdbcType=VARCHAR},
+    mac = #{mac,jdbcType=VARCHAR},
+    read_if = #{readIf,jdbcType=INTEGER},
+    version = #{version,jdbcType=VARCHAR},
+    date = #{date,jdbcType=TIMESTAMP},
+    is_del = #{isDel,jdbcType=INTEGER},
+    contain = #{contain,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cen.feedback.entity.Feedback">
+    update t_feedback
+    set user = #{user,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      system = #{system,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      read_if = #{readIf,jdbcType=INTEGER},
+      version = #{version,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
