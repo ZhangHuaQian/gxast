@@ -1,0 +1,1345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="gxast:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="064e051b-9cf8-4dcd-9e13-43473322dff5" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/controller/GzbdContestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/dao/GzbdContestMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/dao/GzbdContestMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/entity/GzbdContest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/service/GzbdContestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContest/service/impl/GzbdContestServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/controller/GzbdContestCodeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/dao/GzbdContestCodeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/dao/GzbdContestCodeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/entity/GzbdContestCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/service/GzbdContestCodeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestCode/service/impl/GzbdContestCodeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/controller/GzbdContestFirewallController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/dao/GzbdContestFirewallMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/dao/GzbdContestFirewallMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/entity/GzbdContestFirewall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/service/GzbdContestFirewallService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestFirewall/service/impl/GzbdContestFirewallServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/controller/GzbdContestRecordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/dao/GzbdContestRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/dao/GzbdContestRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/entity/GzbdContestRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/service/GzbdContestRecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestRecord/service/impl/GzbdContestRecordServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/controller/GzbdContestResultController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/dao/GzbdContestResultMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/dao/GzbdContestResultMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/entity/GzbdContestResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/service/GzbdContestResultService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestResult/service/impl/GzbdContestResultServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/controller/GzbdContestUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/dao/GzbdContestUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/dao/GzbdContestUserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/entity/GzbdContestUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/service/GzbdContestUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/GzbdContestUser/service/impl/GzbdContestUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/controller/JtyyForeignController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/dao/JtyyForeignMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/dao/JtyyForeignMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/entity/JtyyForeign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/jdbc" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/jdbc/JtyyConn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/jdbc/JtyyQuery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/service/JtyyForeignService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/JtyyForeign/service/impl/JtyyForeignServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/controller/KpzsContestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/dao/KpzsContestMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/dao/KpzsContestMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/entity/KpzsContest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/service/KpzsContestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContest/service/impl/KpzsContestServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/controller/KpzsContestCodeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/dao/KpzsContestCodeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/dao/KpzsContestCodeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/entity/KpzsContestCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/service/KpzsContestCodeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestCode/service/impl/KpzsContestCodeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/controller/KpzsContestRecordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/dao/KpzsContestRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/dao/KpzsContestRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/entity/KpzsContestRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/service/KpzsContestRecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestRecord/service/impl/KpzsContestRecordServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/controller/KpzsContestUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/dao/KpzsContestUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/dao/KpzsContestUserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/entity/KpzsContestUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/service/KpzsContestUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/KpzsContestUser/service/impl/KpzsContestUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/controller/NewsVerifyLogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/dao/NewsVerifyLogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/dao/NewsVerifyLogMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/entity/NewsVerifyLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/service/NewsVerifyLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NewsVerifyLog/service/impl/NewsVerifyLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/controller/NfkjXczxContestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/dao/NfkjXczxContestMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/dao/NfkjXczxContestMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/entity/NfkjXczxContest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/service/NfkjXczxContestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContest/service/impl/NfkjXczxContestServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/controller/NfkjXczxContestCodeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/dao/NfkjXczxContestCodeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/dao/NfkjXczxContestCodeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/entity/NfkjXczxContestCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/service/NfkjXczxContestCodeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestCode/service/impl/NfkjXczxContestCodeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/controller/NfkjXczxContestRecordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/dao/NfkjXczxContestRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/dao/NfkjXczxContestRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/entity/NfkjXczxContestRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/service/NfkjXczxContestRecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestRecord/service/impl/NfkjXczxContestRecordServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/controller/NfkjXczxContestUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/dao/NfkjXczxContestUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/dao/NfkjXczxContestUserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/entity/NfkjXczxContestUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/service/NfkjXczxContestUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjXczxContestUser/service/impl/NfkjXczxContestUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/controller/NfkjwForeignController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/dao/NfkjwForeignMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/dao/NfkjwForeignMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/entity/NfkjwForeign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/jdbc" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/jdbc/NfkjwConn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/jdbc/NfkjwQuery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/service/NfkjwForeignService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/NfkjwForeign/service/impl/NfkjwForeignServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/controller/XczxContestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/dao/XczxContestMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/dao/XczxContestMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/entity/XczxContest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/service/XczxContestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContest/service/impl/XczxContestServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestCode" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestCode/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestCode/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestCode/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestCode/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestCode/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/controller/XczxContestRecordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/dao/XczxContestRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/dao/XczxContestRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/entity/XczxContestRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/service/XczxContestRecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestRecord/service/impl/XczxContestRecordServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/controller/XczxContestUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/dao" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/dao/XczxContestUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/dao/XczxContestUserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/entity" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/entity/XczxContestUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/service" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/service/XczxContestUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/service/impl" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/XczxContestUser/service/impl/XczxContestUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/GzbdContest" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/GzbdContest/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/GzbdContest/controller/AppGzbdContestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/GzbdContest/controller/GzbdWxController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/GzbdContest/controller/SignUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/KpzsContest" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/KpzsContest/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/KpzsContest/controller/AppKpzsContestReconrdController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/KpzsContest/controller/KpzsWxController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/KpzsContest/controller/SignUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/NfkjXczxContest" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/NfkjXczxContest/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/NfkjXczxContest/controller/AppNfkjXczxContestRecordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/NfkjXczxContest/controller/NfkjXczxWxController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/XczxContest" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/XczxContest/controller" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/XczxContest/controller/AppXczxContestReconrdController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/XczxContest/controller/XczxWxController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/util" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/util/PayForUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/util/QRUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/util/WeChatConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/util/WeChatParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/util/WxHttpUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/util/XMLUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/util/ImageDown.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/error.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/answer/again_btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/answer/xxgzbd_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/answer/xxgzbd_content_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/answer/xxgzbd_end_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/answer/xxgzbd_index_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/default_vip_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/gzbd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/kpzs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/maintain.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/wx-pay.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/xxgzbd_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/xxgzbd_content_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/xxgzbd_end_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/xxgzbd_index_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/sys/news/modify.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/modify.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/modify.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/gzbd_contest.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/gzbd_end.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/gzbd_index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/nfkj_xczx_contest.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/nfkj_xczx_end.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/nfkj_xczx_index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/nfkj_xczx_wx_1.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/nfkj_xczx_wx_2.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/news/newsList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/order" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/order/fail.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/order/pay.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/order/success.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/statement.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/user/bbs/myCommentList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/user/newsComment" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/user/newsComment/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/user/session/update_phone.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/xxgzbd" afterDir="true" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/JDBC/JDBCUtils_yy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/JDBC/JDBCUtils_yy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/JDBC/SelectDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/JDBC/SelectDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/ProductComment/dao/ProductCommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/ProductComment/dao/ProductCommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/address/controller/addressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/address/controller/addressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/StxcContest/controller/AppWxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/StxcContest/controller/AppWxController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/SubjectType/controller/AppSubjectTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/SubjectType/controller/AppSubjectTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/controller/AppsiteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/controller/AppsiteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/order/controller/AppOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/order/controller/AppOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/products/controller/ProductrController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/products/controller/ProductrController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/service/AppsiteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/service/AppsiteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/service/impl/AppsiteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/service/impl/AppsiteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/user/controller/PhoneUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/user/controller/PhoneUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wechat/util/ConfigUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wechat/util/ConfigUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/controller/WxPayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/wxpay/controller/WxPayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/appsite/xbsb/controller/AppXbsbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/appsite/xbsb/controller/AppXbsbController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/bbs/comment/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/bbs/comment/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/bbs/report/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/bbs/report/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/bbs/topic/controller/topicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/bbs/topic/controller/topicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/common/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/controller/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/common/task/TaskCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/task/TaskCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/common/util/CommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/util/CommonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/common/util/MD5Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/util/MD5Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/common/util/PhoneMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/util/PhoneMsg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/common/util/ReturnInfoType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/util/ReturnInfoType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/common/util/SimpleCORSFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/util/SimpleCORSFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/common/util/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/common/util/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news/controller/NewsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news/dao/NewsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news/dao/NewsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news/entity/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news/entity/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news/service/NewsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news/service/NewsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news/service/impl/NewsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news/service/impl/NewsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/controller/NewsVeriftyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/controller/NewsVeriftyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/dao/NewsVeriftyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/dao/NewsVeriftyMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/dao/NewsVeriftyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/dao/NewsVeriftyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/service/NewsVeriftyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/service/NewsVeriftyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/service/impl/NewsVeriftyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVerifty/service/impl/NewsVeriftyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVeriftyUser/dao/NewsVeriftyUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVeriftyUser/dao/NewsVeriftyUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVeriftyUser/dao/NewsVeriftyUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVeriftyUser/dao/NewsVeriftyUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVeriftyUser/service/NewsVeriftyUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVeriftyUser/service/NewsVeriftyUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/newsVeriftyUser/service/impl/NewsVeriftyUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/newsVeriftyUser/service/impl/NewsVeriftyUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news_axhd/controller/News_axhdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news_axhd/controller/News_axhdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news_axhd/entity/NewsAxhd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news_axhd/entity/NewsAxhd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news_comment/dao/NewsCommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news_comment/dao/NewsCommentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news_comment/entity/NewsComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news_comment/entity/NewsComment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news_comment/service/NewsCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news_comment/service/NewsCommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news_comment/service/impl/NewsCommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news_comment/service/impl/NewsCommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news_zzgk/controller/News_zzgkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news_zzgk/controller/News_zzgkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/news_zzgk/entity/NewsZzgk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/news_zzgk/entity/NewsZzgk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/order/dao/orderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/order/dao/orderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/order/entity/order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/order/entity/order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/order/service/impl/orderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/order/service/impl/orderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/order/service/orderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/order/service/orderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/product/dao/productMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/product/dao/productMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/shopcar/dao/shopcarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/shopcar/dao/shopcarMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/shopcar/service/ShopcarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/shopcar/service/ShopcarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/shopcar/service/impl/ShopcarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/shopcar/service/impl/ShopcarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/ucenter/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/ucenter/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/ucenter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/ucenter/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/ucenter/filter/AppSiteFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/ucenter/filter/AppSiteFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/upms/shiro/CenRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/upms/shiro/CenRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/web/news/controller/WebNewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/web/news/controller/WebNewsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/web/news_jtyy/controller/WebNews_jtyyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/web/news_jtyy/controller/WebNews_jtyyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/web/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/web/order/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/web/shopcar/controller/ShopcarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/web/shopcar/controller/ShopcarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/xbsbs/controller/XbsbsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/xbsbs/controller/XbsbsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cen/xbsbs/entity/xbsbs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cen/xbsbs/entity/xbsbs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/ehcache.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/comment/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/comment/CommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/news/NewsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/news/NewsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/news_axhd/news_axhdMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/news_axhd/news_axhdMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/news_comment/NewsCommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/news_comment/NewsCommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/news_zzgk/news_zzgkMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/news_zzgk/news_zzgkMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/order/orderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/order/orderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/product/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/product/ProductMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/shopcar/shopcarMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/shopcar/shopcarMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/topic/TopicMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/topic/TopicMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis/xbsbs/xbsbsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis/xbsbs/xbsbsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/spring-shiro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/conf/spring-shiro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/production/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/production/jdbc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/production/system.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/production/system.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/conf/spring-shiro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/conf/spring-shiro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resource/css/xadmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/xadmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resource/index_img/06.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resource/index_img/06.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resource/js/my.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/my.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/dictionary/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/dictionary/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/fpry/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/fpry/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/fpry/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/fpry/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/fpry/staff.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/fpry/staff.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/jtyy/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/jtyy/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/jtyy/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/jtyy/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/jtyy/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/jtyy/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/link/linklist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/link/linklist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/loopphoto/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/loopphoto/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/firstVerifty.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/firstVerifty.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/firstVeriftyNewslist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/firstVeriftyNewslist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/myNewslist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/myNewslist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/rollbackNewslist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/rollbackNewslist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/secondVerifty.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/secondVerifty.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/secondVeriftyNewslist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/newVerifty/secondVeriftyNewslist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news/news.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news/news.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/news.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_axhd/news.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_comment/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_comment/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_comment/todolist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_comment/todolist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/news.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/news_zzgk/news.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/nfkjw/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/nfkjw/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/nfkjw/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/nfkjw/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/nfkjw/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/nfkjw/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/nfkjw/news.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/nfkjw/news.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/product/comment/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/product/comment/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/product/insert.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/product/insert.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/product/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/product/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/product/type_add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/product/type_add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/product/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/product/update.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/subject/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/subject/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/subjectType/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/subjectType/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/topic/reportList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/topic/reportList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/topic_comment/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/topic_comment/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/topic_comment/todolist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/topic_comment/todolist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/insert.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/insert.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/list-phone.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/list-phone.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/select-phone.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/select-phone.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/select.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/select.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/update-my.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/update-my.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/update-phone.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/update-phone.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/ucenter/user/update.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/upms/menu/insert.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/upms/menu/insert.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/welcome.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/xbsb/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/xbsb/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/xbsb/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/xbsb/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sys/xbsb/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sys/xbsb/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/userlogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userlogin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/about/jgzn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/about/jgzn.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/about/zxjj.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/about/zxjj.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/app/cdlshb/contest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/app/cdlshb/kpzs_contest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/app/cdlshb/end.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/app/cdlshb/kpzs_end.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/app/cdlshb/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/app/cdlshb/kpzs_index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/app/question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/app/question.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/app/wx_2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/app/wx_2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/app/xczx/contest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/app/xczx/xczx_contest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/app/xczx/end.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/app/xczx/xczx_end.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/app/xczx/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/app/xczx/xczx_index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/kpzs_contest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/kpzs_contest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/kpzs_index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/kpzs_index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/kpzs_wx_1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/kpzs_wx_1.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/pc/question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/pc/question.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/wx_1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/wx_1.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/xczx_contest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/xczx_contest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/answer/xczx_index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/answer/xczx_index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/bbs/details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/bbs/details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/bbs/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/bbs/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/bbs/report.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/bbs/report.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/include/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/include/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/include/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/include/head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/include/ucenter-head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/include/ucenter-head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/include/ucenter-left-menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/include/ucenter-left-menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news/details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news/details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news/newslist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news/newslist.jsp.bak-2020-03-13" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news/selectList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news/selectList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news_axhd/details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news_axhd/details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news_axhd/selectList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news_axhd/selectList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news_jtyy/details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news_jtyy/details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news_nfkjw/details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news_nfkjw/details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news_xbsb/details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news_xbsb/details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news_zzgk/details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news_zzgk/details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/news_zzgk/selectList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/news_zzgk/selectList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/product/details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/product/details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/product/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/product/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/shopcar/address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/shopcar/address.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/shopcar/shopcar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/shopcar/shopcar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/subject/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/subject/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/address/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/address/update.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/bbs/insert.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/bbs/insert.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/bbs/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/bbs/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/bbs/listforAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/bbs/listforAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/delivery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/delivery.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/message_details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/message_details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/order.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/order.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/order_details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/order_details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/remark.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/remark.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/session/session.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/session/session.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/user/user_message.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/web/user/user_message.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/wechatToApp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/wechatToApp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/wechatToWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/wechatToWeb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target" beforeDir="true" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/gxast$gxast.ic" NAME="gxast Coverage Results" MODIFIED="1577198214322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>selectNewsNum</find>
+      <find>selectNewsNum(</find>
+      <find>xmtjz</find>
+      <find>new_jtyyList1&quot;</find>
+      <find>TokenExpiryDate</find>
+      <find>cen_xczhapp_token&quot;</find>
+      <find>&quot;cen_xczhapp_token&quot;</find>
+      <find>cen_xczhapp_phone_code&quot;</find>
+      <find>cen_xczhapp_phone_code</find>
+      <find>if\(new_jtyyList1\.size\(\)\&gt;0\)\{\n                EHCacheUtil\.put\(\&quot;cen_crmjl\&quot;\,\&quot;new_jtyyList1\&quot;\,new_jtyyList1\)\;\n            \}</find>
+      <find>jttt</find>
+      <find>jtyy_left_center_img_1</find>
+      <find>jtyy_title</find>
+      <find>p_overflow</find>
+      <find>hover</find>
+      <find>&lt;img</find>
+      <find>myzx</find>
+      <find>.pointer</find>
+      <find>new_jtyyList2</find>
+      <find>jtyy_label</find>
+      <find>layer</find>
+      <find>layui.use</find>
+      <find>subject_left</find>
+      <find>status</find>
+      <find>排行</find>
+      <find>\&quot;</find>
+      <find>ranking</find>
+      <find>jrtt&quot;</find>
+      <find>今日</find>
+      <find>jrtt</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>com.cen.SczxContestRecord.entity.SczxContestRecord</replace>
+      <replace>com.cen.KpzsContestRecord.entity.KpzsContestRecord</replace>
+      <replace>com.cen.SczxContestUser.entity.SczxContestUser</replace>
+      <replace>sczxContestUserService</replace>
+      <replace>kpzsContestUserService</replace>
+      <replace>xczx</replace>
+      <replace>com.cen.XczxContest.entity.XczxContest</replace>
+      <replace>com.cen.XczxContestRecord.entity.XczxContestRecord</replace>
+      <replace>com.cen.XczxContestUser.entity.XczxContestUser</replace>
+      <replace>com.cen.XczxContetstCode.entity.XczxContetstCode</replace>
+      <replace>xczxContestUserService</replace>
+      <replace>com.cen.KpzsContestUser.entity.KpzsContestUser</replace>
+      <replace>com.cen.NfkjXczxContest.entity.NfkjXczxContest</replace>
+      <replace>com.cen.NfkjXczxContestCode.entity.NfkjXczxContestCode</replace>
+      <replace>com.cen.NfkjXczxContestRecord.entity.NfkjXczxContestRecord</replace>
+      <replace>com.cen.NfkjXczxContestUser.entity.NfkjXczxContestUser</replace>
+      <replace>com.cen.GzbdContestRecord.entity.GzbdContestRecord</replace>
+      <replace>com.cen.GzbdContestCode.entity.GzbdContestCode</replace>
+      <replace>广西科学技术普及传播中心</replace>
+      <replace>com.cen.GzbdContestFirewall.entity.GzbdContestFirewall</replace>
+      <replace>sx_showWin</replace>
+      <replace>deleteComment</replace>
+      <replace>tid</replace>
+      <replace>com.cen.NewsVerifyLog.entity.NewsVerifyLog</replace>
+      <replace>qrCode</replace>
+      <replace>com.cen.JtyyForeign.entity.JtyyForeign</replace>
+      <replace>JtyyForeign</replace>
+      <replace>com.cen.NfkjwForeign.entity.NfkjwForeign</replace>
+      <replace>NfkjwConn</replace>
+      <replace>'</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>D:\Projects\gxast\src\main\webapp\web</dir>
+      <dir>D:\Projects\gxast\src\main\resources</dir>
+      <dir>D:\Projects\gxast\src\main\webapp\app</dir>
+      <dir>D:\Projects\gxast\src</dir>
+      <dir>D:\Projects\gxast\src\main\java\com\cen\bbs\comment\dao</dir>
+    </dirStrings>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="1cYuLoOd72DykLDUjQXIeQUrbNg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/webapp/app/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../code/gxast/pom.xml" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="模块" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\gxast\src\main\java\com\cen" />
+      <recent name="D:\Projects\gxast\src\main\webapp\web" />
+      <recent name="D:\Projects\gxast\src\main\webapp\web\order" />
+      <recent name="D:\Projects\gxast\src\main\webapp\resource\images" />
+      <recent name="D:\Projects\gxast\src\main\webapp" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cen.NfkjwForeign.jdbc" />
+      <recent name="com.cen.appsite.GzbdContest.controller" />
+      <recent name="com.cen.appsite.XczxContest.controller" />
+      <recent name="com.cen.appsite.KpzsContest.controller" />
+      <recent name="com.cen.appsite.SczxContest.controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\gxast\src\main\webapp\web\order" />
+      <recent name="D:\Projects\gxast\src\main\webapp" />
+      <recent name="D:\Projects\gxast\src\main\webapp\WEB-INF" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gxast" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.51" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/gxast" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="gxast:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/gxast_war" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_gxast" />
+        <option name="HTTP_PORT" value="8081" />
+        <option name="JNDI_PORT" value="1000" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="60050" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="gxast:war exploded" />
+          <artifact name="gxast:war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\lenovo\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="064e051b-9cf8-4dcd-9e13-43473322dff5" name="Default" comment="" />
+      <created>1566887597451</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566887597451</updated>
+      <workItem from="1566887598657" duration="11467000" />
+      <workItem from="1567044649046" duration="4572000" />
+      <workItem from="1567064390110" duration="17374000" />
+      <workItem from="1567126387748" duration="5354000" />
+      <workItem from="1567135963118" duration="260000" />
+      <workItem from="1567136648736" duration="40000" />
+      <workItem from="1567141121048" duration="2781000" />
+      <workItem from="1567650430004" duration="14453000" />
+      <workItem from="1567995308463" duration="16336000" />
+      <workItem from="1568077455554" duration="1472000" />
+      <workItem from="1568084290180" duration="3577000" />
+      <workItem from="1568103796118" duration="6498000" />
+      <workItem from="1568306886603" duration="1641000" />
+      <workItem from="1568595271157" duration="615000" />
+      <workItem from="1568636837212" duration="10504000" />
+      <workItem from="1568774475545" duration="1980000" />
+      <workItem from="1568942140853" duration="1052000" />
+      <workItem from="1569210737556" duration="87000" />
+      <workItem from="1569546552222" duration="12008000" />
+      <workItem from="1569574529440" duration="838000" />
+      <workItem from="1569575796526" duration="497000" />
+      <workItem from="1570699574773" duration="18372000" />
+      <workItem from="1571187399241" duration="30571000" />
+      <workItem from="1571298877870" duration="1555000" />
+      <workItem from="1571361007646" duration="81000" />
+      <workItem from="1571367651263" duration="290000" />
+      <workItem from="1571379066284" duration="2449000" />
+      <workItem from="1571385791995" duration="5937000" />
+      <workItem from="1571619560877" duration="266000" />
+      <workItem from="1571710107680" duration="8822000" />
+      <workItem from="1571793954399" duration="2305000" />
+      <workItem from="1571797194509" duration="83000" />
+      <workItem from="1571799114510" duration="1911000" />
+      <workItem from="1571802278498" duration="221000" />
+      <workItem from="1571905324999" duration="210000" />
+      <workItem from="1572600721883" duration="731000" />
+      <workItem from="1572830619368" duration="1131000" />
+      <workItem from="1572834215546" duration="2353000" />
+      <workItem from="1573435902571" duration="3353000" />
+      <workItem from="1573441120729" duration="15394000" />
+      <workItem from="1573462796121" duration="6247000" />
+      <workItem from="1573612749686" duration="48540000" />
+      <workItem from="1573783574322" duration="723000" />
+      <workItem from="1574306549752" duration="20000" />
+      <workItem from="1574911963557" duration="3304000" />
+      <workItem from="1575444800934" duration="407000" />
+      <workItem from="1575863731041" duration="720000" />
+      <workItem from="1576134742026" duration="273000" />
+      <workItem from="1576136102769" duration="299000" />
+      <workItem from="1576144450695" duration="92000" />
+      <workItem from="1576201007733" duration="73000" />
+      <workItem from="1576202593324" duration="670000" />
+      <workItem from="1576754534662" duration="9894000" />
+      <workItem from="1576803652523" duration="9093000" />
+      <workItem from="1576824636930" duration="19969000" />
+      <workItem from="1577063613587" duration="249000" />
+      <workItem from="1577151189684" duration="36614000" />
+      <workItem from="1577198309001" duration="8257000" />
+      <workItem from="1577255435789" duration="7677000" />
+      <workItem from="1577266583641" duration="78285000" />
+      <workItem from="1577671359204" duration="11183000" />
+      <workItem from="1577690042565" duration="7614000" />
+      <workItem from="1577698453150" duration="3477000" />
+      <workItem from="1577754855453" duration="21224000" />
+      <workItem from="1577926842214" duration="21034000" />
+      <workItem from="1577972037167" duration="26088000" />
+      <workItem from="1578274513495" duration="465000" />
+      <workItem from="1578275003713" duration="11241000" />
+      <workItem from="1578365872764" duration="49333000" />
+      <workItem from="1578536409088" duration="44934000" />
+      <workItem from="1578877369918" duration="72717000" />
+      <workItem from="1579395710581" duration="34853000" />
+      <workItem from="1579492407890" duration="24344000" />
+      <workItem from="1579569023045" duration="22464000" />
+      <workItem from="1579656143038" duration="65000" />
+      <workItem from="1579686759951" duration="9866000" />
+      <workItem from="1579748664213" duration="7839000" />
+      <workItem from="1579763595158" duration="2177000" />
+      <workItem from="1579768388808" duration="643000" />
+      <workItem from="1580694584773" duration="7345000" />
+      <workItem from="1580711884936" duration="17177000" />
+      <workItem from="1580782658737" duration="41519000" />
+      <workItem from="1580893919542" duration="10863000" />
+      <workItem from="1580982490372" duration="19258000" />
+      <workItem from="1581046601561" duration="27347000" />
+      <workItem from="1581330257362" duration="4647000" />
+      <workItem from="1581488970780" duration="911000" />
+      <workItem from="1581647322544" duration="586000" />
+      <workItem from="1581932393273" duration="1368000" />
+      <workItem from="1582078389362" duration="300000" />
+      <workItem from="1582193134122" duration="657000" />
+      <workItem from="1582376979903" duration="6496000" />
+      <workItem from="1582506108177" duration="287000" />
+      <workItem from="1583770080392" duration="717000" />
+      <workItem from="1583802475653" duration="225000" />
+      <workItem from="1583907420011" duration="2524000" />
+      <workItem from="1583996378152" duration="4024000" />
+      <workItem from="1584003913243" duration="33605000" />
+      <workItem from="1584199964137" duration="12000" />
+      <workItem from="1584320659584" duration="94960000" />
+      <workItem from="1584579760539" duration="1925000" />
+      <workItem from="1584804222907" duration="572000" />
+      <workItem from="1585122297826" duration="1922000" />
+      <workItem from="1585277665856" duration="847000" />
+      <workItem from="1585280216757" duration="2752000" />
+      <workItem from="1586158963500" duration="348000" />
+      <workItem from="1586226717368" duration="1661000" />
+      <workItem from="1586229379724" duration="2172000" />
+      <workItem from="1586310813675" duration="5358000" />
+      <workItem from="1586340283768" duration="1532000" />
+      <workItem from="1586395310775" duration="23601000" />
+      <workItem from="1586425346986" duration="15213000" />
+      <workItem from="1586484778806" duration="2255000" />
+      <workItem from="1586763553885" duration="2327000" />
+      <workItem from="1587107038470" duration="2733000" />
+      <workItem from="1587112264761" duration="1217000" />
+      <workItem from="1587266947126" duration="3575000" />
+      <workItem from="1587281442976" duration="6756000" />
+      <workItem from="1587344616481" duration="3552000" />
+      <workItem from="1587354282127" duration="3807000" />
+      <workItem from="1587377424847" duration="1221000" />
+      <workItem from="1587425135232" duration="3712000" />
+      <workItem from="1587526674073" duration="877000" />
+      <workItem from="1587527836597" duration="16000" />
+      <workItem from="1587545254359" duration="872000" />
+      <workItem from="1587612696217" duration="5133000" />
+      <workItem from="1587635066014" duration="618000" />
+      <workItem from="1587712554735" duration="742000" />
+      <workItem from="1587717577450" duration="4321000" />
+      <workItem from="1587783905165" duration="442000" />
+      <workItem from="1587796650078" duration="710000" />
+      <workItem from="1588064273647" duration="611000" />
+      <workItem from="1588728054670" duration="6346000" />
+      <workItem from="1588741296602" duration="1125000" />
+      <workItem from="1588745749946" duration="9813000" />
+      <workItem from="1588756982918" duration="304000" />
+      <workItem from="1588757323548" duration="17128000" />
+      <workItem from="1588836896449" duration="40000" />
+      <workItem from="1588837020759" duration="62832000" />
+      <workItem from="1589159105631" duration="11807000" />
+      <workItem from="1589334618773" duration="62471000" />
+      <workItem from="1589763587589" duration="382000" />
+      <workItem from="1589763985578" duration="2742000" />
+      <workItem from="1590717811013" duration="321000" />
+      <workItem from="1590718151120" duration="1341000" />
+    </task>
+    <task id="LOCAL-00058">
+      <created>1576812856842</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1576812856842</updated>
+    </task>
+    <task id="LOCAL-00059">
+      <created>1576824897681</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1576824897681</updated>
+    </task>
+    <task id="LOCAL-00060">
+      <created>1576828705855</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1576828705855</updated>
+    </task>
+    <task id="LOCAL-00061">
+      <created>1576828757824</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1576828757830</updated>
+    </task>
+    <task id="LOCAL-00062">
+      <created>1576828773882</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1576828773882</updated>
+    </task>
+    <task id="LOCAL-00063">
+      <created>1576830700040</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1576830700041</updated>
+    </task>
+    <task id="LOCAL-00064">
+      <created>1577017548729</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1577017548729</updated>
+    </task>
+    <task id="LOCAL-00065">
+      <created>1577017559735</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1577017559735</updated>
+    </task>
+    <task id="LOCAL-00066">
+      <created>1577017569418</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1577017569418</updated>
+    </task>
+    <task id="LOCAL-00067">
+      <created>1577017577627</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1577017577627</updated>
+    </task>
+    <task id="LOCAL-00068">
+      <created>1577019554062</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1577019554062</updated>
+    </task>
+    <task id="LOCAL-00069">
+      <created>1577019781054</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1577019781054</updated>
+    </task>
+    <task id="LOCAL-00070">
+      <created>1577019795696</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1577019795696</updated>
+    </task>
+    <task id="LOCAL-00071">
+      <created>1577021702690</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1577021702690</updated>
+    </task>
+    <task id="LOCAL-00072">
+      <created>1577023467202</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1577023467202</updated>
+    </task>
+    <task id="LOCAL-00073">
+      <created>1577023490660</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1577023490660</updated>
+    </task>
+    <task id="LOCAL-00074">
+      <created>1577024099168</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1577024099169</updated>
+    </task>
+    <task id="LOCAL-00075">
+      <created>1577024229904</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1577024229904</updated>
+    </task>
+    <task id="LOCAL-00076">
+      <created>1577159857137</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1577159857139</updated>
+    </task>
+    <task id="LOCAL-00077">
+      <created>1577193346533</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1577193346534</updated>
+    </task>
+    <task id="LOCAL-00078">
+      <created>1577193356406</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1577193356407</updated>
+    </task>
+    <task id="LOCAL-00079">
+      <created>1577193367309</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1577193367310</updated>
+    </task>
+    <task id="LOCAL-00080">
+      <created>1577193404425</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1577193404425</updated>
+    </task>
+    <task id="LOCAL-00081">
+      <created>1577194176682</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1577194176682</updated>
+    </task>
+    <task id="LOCAL-00082">
+      <created>1577340700554</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1577340700555</updated>
+    </task>
+    <task id="LOCAL-00083">
+      <created>1577340715386</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1577340715386</updated>
+    </task>
+    <task id="LOCAL-00084">
+      <created>1577410192962</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1577410192962</updated>
+    </task>
+    <task id="LOCAL-00085">
+      <created>1577410216299</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1577410216299</updated>
+    </task>
+    <task id="LOCAL-00086">
+      <created>1577411642887</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1577411642887</updated>
+    </task>
+    <task id="LOCAL-00087">
+      <created>1577414688045</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1577414688045</updated>
+    </task>
+    <task id="LOCAL-00088">
+      <created>1577414981098</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1577414981098</updated>
+    </task>
+    <task id="LOCAL-00089">
+      <created>1577414994442</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1577414994442</updated>
+    </task>
+    <task id="LOCAL-00090">
+      <created>1577416302296</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1577416302296</updated>
+    </task>
+    <task id="LOCAL-00091">
+      <created>1577418863593</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1577418863593</updated>
+    </task>
+    <task id="LOCAL-00092">
+      <created>1577431175773</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1577431175773</updated>
+    </task>
+    <task id="LOCAL-00093">
+      <created>1577438892951</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1577438892952</updated>
+    </task>
+    <task id="LOCAL-00094">
+      <created>1577668246195</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1577668246195</updated>
+    </task>
+    <task id="LOCAL-00095">
+      <created>1577686308219</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1577686308219</updated>
+    </task>
+    <task id="LOCAL-00096">
+      <created>1577686389450</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1577686389450</updated>
+    </task>
+    <task id="LOCAL-00097">
+      <created>1577686641257</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1577686641257</updated>
+    </task>
+    <task id="LOCAL-00098">
+      <created>1577686648986</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1577686648986</updated>
+    </task>
+    <task id="LOCAL-00099">
+      <created>1577687928954</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1577687928955</updated>
+    </task>
+    <task id="LOCAL-00100">
+      <created>1578472204675</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1578472204676</updated>
+    </task>
+    <task id="LOCAL-00101">
+      <created>1578898207383</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1578898207384</updated>
+    </task>
+    <task id="LOCAL-00102">
+      <created>1578899434924</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1578899434924</updated>
+    </task>
+    <task id="LOCAL-00103">
+      <created>1578984813438</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1578984813439</updated>
+    </task>
+    <task id="LOCAL-00104">
+      <created>1579502185550</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1579502185551</updated>
+    </task>
+    <task id="LOCAL-00105">
+      <created>1581304974310</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1581304974310</updated>
+    </task>
+    <task id="LOCAL-00106">
+      <created>1581305009512</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1581305009512</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590717916868">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590717916868" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1590718944730">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590718944730" />
+    <state x="490" y="174" key="Maven.ArtifactSearchDialog" timestamp="1590717997430">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="490" y="174" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590717997430" />
+    <state x="760" y="115" key="SettingsEditor" timestamp="1590718919467">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="760" y="115" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590718919467" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cen/news_zzgk/controller/News_zzgkController.java</url>
+          <line>343</line>
+          <option name="timeStamp" value="365" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cen/appsite/xbsb/controller/AppXbsbController.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="435" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+</project>
